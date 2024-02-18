@@ -1,0 +1,15 @@
+bufferline done
+toggleterm maybe dont need to do
+flash done
+change to gruvbox with dif bg changed to gruvbox-material done
+add a method to change bg cmd
+nvim-notify for noice and in general done
+maybe yanky
+dashboard-nvim
+change from none-ls to conform.nvim done
+dressing done
+
+add rust plugins
+added rustaceanvim
+
+add oil done

@@ -1,0 +1,4 @@
+[
+  ./xdg.nix
+  ./registry.nix
+]

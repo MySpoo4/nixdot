@@ -1,0 +1,3 @@
+[submodule "dotfiles/nvimdot"]
+	path = dotfiles/nvimdot
+	url = git@github.com:MySpoo4/nvimdot.git
