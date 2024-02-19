@@ -46,11 +46,6 @@
       }
     );
 
-    templates = {
-      rust = {
-        path = ./shells/rust;
-        description = "test";
-      };
-    };
+    templates = import ./shells/shells.nix;
   };
 }
