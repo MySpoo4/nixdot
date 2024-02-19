@@ -46,6 +46,10 @@
         inherit hyprland nixos-hardware nur;
       }
     );
-    templates = shells;
+    templates = {
+      rust = {
+        path = ./shells/rust;
+      };
+    };
   };
 }
