@@ -1,0 +1,4 @@
+{ shells, ... }:
+{
+  nix.registry = { shells };
+}

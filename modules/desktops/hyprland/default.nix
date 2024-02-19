@@ -24,8 +24,10 @@ in {
         ${exec}
       fi
     '';
+
+    systemPackages = with pkgs; [
+      wl-clipboard
+    ];
   };
 
-  # systemPackages = with pkgs; {
-  # };
 }

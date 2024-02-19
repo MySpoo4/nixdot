@@ -38,12 +38,12 @@
       experimental-features = [ "nix-command" "flakes" ];
       builders-use-substitutes = true;
     };
-    registry = {
-      shells.to = {
-        type = "path";
-        path = builtins.toString ../shells;
-      };
-    };
+    # registry = {
+    #   shells.to = {
+    #     type = "path";
+    #     path = builtins.toString ../shells;
+    #   };
+    # };
     gc = {
       automatic = true;
       dates = "weekly";

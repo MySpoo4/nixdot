@@ -5,6 +5,7 @@
   home-manager,
   nur,
   hyprland,
+  shells,
   vars,
   ...
 }:
@@ -19,7 +20,7 @@ in {
   temmi = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system pkgs hyprland vars;
+      inherit inputs shells system pkgs hyprland vars;
       host = {
         hostName = "temmi";
       };
