@@ -46,6 +46,6 @@
         inherit hyprland nixos-hardware nur;
       }
     );
-    templates = shells.templates;
+    templates = shells;
   };
 }
