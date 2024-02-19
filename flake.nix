@@ -37,7 +37,7 @@
       editor = "nvim";
     };
   in
-  rec {
+  {
     nixosConfigurations = (
       import ./core {
         inherit (nixpkgs) lib;
