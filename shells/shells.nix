@@ -1,9 +1,6 @@
-{ self, ... }:
 {
-  templates = {
-    rust = {
-      path = ./rust;
-      description = "rust project";
-    };
+  rust = {
+    path = ./rust;
+    description = "rust project";
   };
 }

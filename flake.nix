@@ -36,9 +36,8 @@
       terminal = "kitty";
       editor = "nvim";
     };
-    shells = (import ./shells/shells.nix) { inherit self; };
   in
-  {
+  rec {
     nixosConfigurations = (
       import ./core {
         inherit (nixpkgs) lib;
