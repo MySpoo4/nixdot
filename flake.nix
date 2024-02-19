@@ -22,31 +22,32 @@
   };
 
   outputs = { 
-      self, 
-      nixpkgs, 
-      nixos-hardware, 
-      home-manager, 
-      nur, 
-      hyprland, 
-      ... 
-    } @ inputs:
-    let
-      vars = {
-        user = "rwan";
-        terminal = "kitty";
-        editor = "nvim";
-      };
-      shells = (import ./shells/shells.nix) { inherit self; };
-    in
-    {
-      nixosConfigurations = (
-        import ./core {
-          inherit (nixpkgs) lib;
-          inherit shells;
-          inherit inputs nixpkgs home-manager vars;
-          inherit hyprland nixos-hardware nur;
-        }
-      );
+    self, 
+    nixpkgs, 
+    nixos-hardware, 
+    home-manager, 
+    nur, 
+    hyprland, 
+    ... 
+  } @ inputs:
+  let
+    vars = {
+      user = "rwan";
+      terminal = "kitty";
+      editor = "nvim";
     };
-
+    shells = (import ./shells/shells.nix) { inherit self; };
+  in
+  {
+    nixosConfigurations = (
+      import ./core {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs home-manager vars;
+        inherit hyprland nixos-hardware nur;
+      }
+    );
+    templates = {
+      inherit (shells) shells;
+    };
+  };
 }

@@ -1,4 +1,7 @@
 { shells, ... }:
+let
+  bob = shells;
+in
 {
-  nix.registry = { shells };
+  nix.registry = bob;
 }

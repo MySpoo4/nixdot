@@ -1,4 +1,3 @@
 [
   ./xdg.nix
-  ./registry.nix
 ]

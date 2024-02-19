@@ -13,7 +13,7 @@ in
       recursive = true;
     };
 
-    "dunst/colorschemerc".text = with theme.scheme.colors; ''
+    "dunst/dunstrc".text = with theme.scheme.colors; ''
       [global]
         frame_color = ${primary}
 
