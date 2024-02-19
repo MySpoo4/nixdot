@@ -46,8 +46,8 @@
         inherit hyprland nixos-hardware nur;
       }
     );
-    templates = {
-      inherit (shells) shells;
-    };
+    templates = (
+      import ./shells/shells.nix
+    );
   };
 }
