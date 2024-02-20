@@ -44,3 +44,11 @@
   force_xwayland = false
 
 
+[urgency_low]
+  timeout = 10
+
+[urgency_normal]
+  timeout = 10
+
+[urgency_critical]
+  timeout = 0

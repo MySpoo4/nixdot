@@ -27,6 +27,12 @@
     # };
   };
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   environment.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/dotfiles";
     NIXOS_OZONE_WL = "1";
