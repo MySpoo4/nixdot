@@ -1,5 +1,5 @@
 {
-  description = "typescript shell";
+  description = "node shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,10 +14,10 @@
   in
   {
     devShells = forEachSupportedSystem ({ pkgs }: {
-      name = "typescript";
+      name = "node";
       default = pkgs.mkShell {
         packages = with pkgs; [
-          bun
+          nodejs
         ];
       };
     });

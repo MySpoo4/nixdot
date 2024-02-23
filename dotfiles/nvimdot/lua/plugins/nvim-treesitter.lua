@@ -13,6 +13,8 @@ local config = function()
 		},
 		ensure_installed = {
 			"rust",
+      "typescript",
+      "scss",
 			"markdown",
 			"yaml",
 			"bash",

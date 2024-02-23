@@ -3,8 +3,12 @@
     path = ./rust;
     description = "rust project";
   };
-  ts = {
-    path = ./ts;
-    description = "typescript (bun) project";
+  bun = {
+    path = ./bun;
+    description = "js/ts (bun) project";
+  };
+  node = {
+    path = ./node;
+    description = "js/ts (node) project";
   };
 }

@@ -1,4 +1,4 @@
 [ 
   ./hyprland
-  ./ags
+  ./waybar
 ]

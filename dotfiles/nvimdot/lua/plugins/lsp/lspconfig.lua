@@ -103,6 +103,18 @@ local config = function()
 			},
 		},
 	})
+
+  -- configure css, scss server
+	lspconfig["cssls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+  -- configure typescript server
+	lspconfig["tsserver"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 end
 
 return {

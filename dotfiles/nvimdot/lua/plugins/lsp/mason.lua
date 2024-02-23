@@ -23,6 +23,7 @@ local config = function()
 		ensure_installed = {
 			"rust_analyzer",
 			"lua_ls",
+      "tsserver",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
