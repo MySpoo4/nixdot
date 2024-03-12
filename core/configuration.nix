@@ -36,6 +36,7 @@
   environment.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/dotfiles";
     NIXOS_OZONE_WL = "1";
+    EDITOR = "nvim";
   };
 
   nix = {
@@ -60,8 +61,13 @@
     fontDir.enable = true;
     packages = with pkgs; [
       inter
-      font-awesome
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      material-design-icons
+      (nerdfonts.override { 
+        fonts = [ 
+          "FiraCode" 
+          "JetBrainsMono"
+        ]; 
+      })
     ];
     fontconfig.defaultFonts = {
       serif = [ "inter" ];

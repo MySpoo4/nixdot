@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 {
-  programs.neovim = {
-    enable = true;
-  };
-
-
   environment.systemPackages = with pkgs; [
     # terminal
     git           # Version Control
@@ -36,8 +31,8 @@
     # # system
     # xdg-utils
     # xdg-user-dirs
-    # gtk-layer-shell
-    # gtk3
+    gtk-layer-shell
+    gtk3
     #
     # # apps
     # qbittorrent

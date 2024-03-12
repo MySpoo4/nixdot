@@ -1,4 +1,5 @@
 {
+  name = "gruvbox";
   scheme = {
     colors = {
       primary = "#d8a657";
@@ -17,5 +18,16 @@
   };
 
   nvim-colorscheme = "gruvbox-material";
+  gtk-theme = {
+    override = false;
+    name = "Gruvbox-Dark-B";
+    package = "gruvbox-gtk-theme";
+  };
+  cursor = {
+    name = "Vimix-cursors";
+    package = "vimix-cursors";
+    extra = false;
+    size = 24;
+  };
 
 }

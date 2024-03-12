@@ -8,7 +8,11 @@ local config = function()
 				i = {
 					["<C-j>"] = "move_selection_next",
 					["<C-k>"] = "move_selection_previous",
+          ["<C-d>"] = "delete_buffer",
 				},
+        n = {
+          ["dd"] = "delete_buffer",
+        },
 			},
 		},
 		pickers = {

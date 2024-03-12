@@ -1,0 +1,4 @@
+[
+  ./packages.nix
+  ./kitty.nix
+]

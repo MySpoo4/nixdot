@@ -39,6 +39,7 @@ end
 
 return {
 	"williamboman/mason.nvim",
+  enabled = false,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

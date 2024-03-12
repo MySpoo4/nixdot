@@ -19,7 +19,7 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 

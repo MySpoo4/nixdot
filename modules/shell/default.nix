@@ -1,0 +1,4 @@
+[
+  ./tmux.nix
+  ./zellij.nix
+]

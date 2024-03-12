@@ -3,8 +3,7 @@ local config = function()
 	bufferline.setup({
 		options = {
 			mode = "buffers", -- set to "tabs" to only show tabpages instead
-			style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
-			themable = false, -- allows highlight groups to be overriden i.e. sets highlights as default
+			style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
 			numbers = "none",
 			close_command = "bdelete! %d", -- can be a string | function, | false see "Mouse actions"
 			right_mouse_command = "bdelete! %d", -- can be a string | function | false, see "Mouse actions"
@@ -28,29 +27,6 @@ local config = function()
 			truncate_names = true, -- whether or not tab names should be truncated
 			tab_size = 18,
 			diagnostics = "nvim_lsp",
-			custom_filter = function(bufnr)
-				-- if the result is false, this buffer will be shown, otherwise, this
-				-- buffer will be hidden.
-
-				-- filter out filetypes you don't want to see
-				local exclude_ft = { "qf", "fugitive", "git" }
-				local cur_ft = vim.bo[bufnr].filetype
-				local should_filter = vim.tbl_contains(exclude_ft, cur_ft)
-
-				if should_filter then
-					return false
-				end
-
-				return true
-			end,
-			offsets = {
-				{
-					filetype = "NvimTree",
-					text = "File Explorer",
-					text_align = "left",
-					separator = true,
-				},
-			},
 			color_icons = true, -- whether or not to add the filetype icon highlights
 			get_element_icon = function(element)
 				-- element consists of {filetype: string, path: string, extension: string, directory: string}
@@ -67,11 +43,10 @@ local config = function()
 			show_tab_indicators = true,
 			persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 			move_wraps_at_ends = true, -- whether or not the move command "wraps" at the first or last position
+      always_show_bufferline = false,
 			-- can also be a table containing 2 custom separators
 			-- [focused and unfocused]. eg: { '|', '|' }
-			separator_style = "slant",
 			enforce_regular_tabs = false,
-			always_show_bufferline = true,
 			sort_by = "insert_at_end",
 		},
 	})
@@ -79,7 +54,7 @@ end
 
 return {
 	"akinsho/bufferline.nvim",
-	event = { "BufEnter" },
+	event = "VeryLazy",
 	version = "*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = config,

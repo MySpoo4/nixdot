@@ -1,3 +1,4 @@
 [
+  ./gtk.nix
   ./xdg.nix
 ]

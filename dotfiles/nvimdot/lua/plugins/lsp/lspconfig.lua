@@ -119,6 +119,7 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
+  enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",

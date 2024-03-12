@@ -18,6 +18,8 @@
         import ../modules/editors ++
         import ../modules/system  ++
         import ../modules/ui ++
+        import ../modules/programs ++
+        import ../modules/shell ++
         import ../modules/utils
       );
       home.homeDirectory = "/home/${vars.user}";
