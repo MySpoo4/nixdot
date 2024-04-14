@@ -16,12 +16,12 @@ let
   };
   lib = nixpkgs.lib;
 in {
-  temmi = lib.nixosSystem {
+  null = lib.nixosSystem {
     inherit system;
     specialArgs = {
       inherit inputs system pkgs hyprland vars;
       host = {
-        hostName = "temmi";
+        hostName = "null";
       };
     };
 
@@ -29,7 +29,7 @@ in {
       ./configuration.nix
       ./packages.nix
       ./home.nix
-      ../hosts/temmi
+      ../hosts/null
       nur.nixosModules.nur
     ];
   };

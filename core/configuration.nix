@@ -7,9 +7,9 @@
   ...
 }:
 {
-  imports = (
-    import ../modules/desktops
-  );
+  imports = [
+    ../modules/desktop/hyprland
+  ];
 
   users.users.${vars.user} = {
     isNormalUser = true;
@@ -27,7 +27,7 @@
     # };
   };
 
-  security.pam.services.swaylock = {
+  security.pam.services.hyprlock = {
     text = ''
       auth include login
     '';

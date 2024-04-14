@@ -1,0 +1,83 @@
+.fetch_bar {
+  background-color: $black;
+  color: $fg;
+  margin: 7px;
+  min-width: 320px;
+  border: 2px solid $bg1;
+  font-size: 14px;
+  font-weight: 400;
+
+  .header {
+    background-color: $bg;
+    padding: 1px 0;
+  }
+
+  .path {
+    color: $magenta;
+    padding-left: 0.5rem;
+    padding-top: 5px;
+  }
+  
+  .icon {
+    font-size: 12px;
+    margin: 0 5px 0 5px;
+  }
+
+  .tree {
+    padding: 0 2rem 0 1rem;
+
+    .tree_item {
+      padding: 1px 0;
+
+      .dir {
+        color: $blue;
+        .folder {
+          font-size: 14px;
+          padding-right: 4px;
+        }
+        
+        .down {
+          color: $fg;
+          font-size: 14px;
+          font-weight: 900;
+          padding-right: 3px;
+        }
+
+        &.desktop {
+          padding-top: 5px;
+        }
+      }
+      
+      .widget {
+
+        &.ram, &.cpu, &.disk {
+          levelbar {
+            trough {
+              min-height: 12px;
+              block {
+                &.filled {
+                  background-color: $fg;
+                }
+                &.empty {
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+
+        &.volume, &.bright {
+          .slider {
+            highlight {
+              min-height: 12px;
+              background: $fg;
+            }
+            trough {
+              background: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}

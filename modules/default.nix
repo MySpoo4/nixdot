@@ -1,18 +1,21 @@
 {
-  imports = [
-    ./hardware
-    ./services
-    ./editors
-    ./programs
-    ./shell
-  ];
+  imports = (
+    import ./apps ++
+    import ./cli-apps ++
+    import ./desktop ++
+    import ./hardware
+  );
 }
+# [
+#   ./cli-apps
+#   ./desktop
+#   ./hardware
+# ]
 
 # (
-#   import ./hardware ++
-#   import ./services ++
-#   import ./editors ++
-#   import ./programs ++
-#   import ./shell
+#   import ./apps ++
+#   import ./cli-apps ++
+#   import ./desktop ++
+#   import ./hardware
 # )
 

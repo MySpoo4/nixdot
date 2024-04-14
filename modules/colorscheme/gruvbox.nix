@@ -2,18 +2,24 @@
   name = "gruvbox";
   scheme = {
     colors = {
-      primary = "#d8a657";
+      primary = "#928374";
       bg = "#282828";
-      altbg = "#3a3735";
+      bg1 = "#32302f";
       fg = "#d4be98";
-      black = "#585858";
+      fg1 = "#ddc7a1";
+      black = "#1b1b1b";
+      black1 = "#252423";
+      grey = "#7c6f64";
+      grey1 = "#928374";
+      grey2 = "#a89984";
+      white = "#fbf1c7";
       red = "#ea6962";
-      green = "#a9b665";
+      orange = "#e78a43";
       yellow = "#d8a657";
+      green = "#a9b665";
       blue = "#7daea3";
-      magenta = "#d3869b";
       cyan = "#89b482";
-      white = "#a89984";
+      magenta = "#d3869b";
     };
   };
 
@@ -23,11 +29,19 @@
     name = "Gruvbox-Dark-B";
     package = "gruvbox-gtk-theme";
   };
+  
   cursor = {
     name = "Vimix-cursors";
     package = "vimix-cursors";
     extra = false;
     size = 24;
   };
+  
+  # cursor = {
+  #   name = "Capitaine Cursors (Gruvbox)";
+  #   package = "capitaine-cursors-themed";
+  #   extra = false;
+  #   size = 24;
+  # };
 
 }

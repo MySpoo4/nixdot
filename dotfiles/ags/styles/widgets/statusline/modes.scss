@@ -1,0 +1,14 @@
+.app_launcher, .cmd_launcher {
+  .apps, .cmds {
+    padding: 4px;
+    background-color: $bg1;
+
+    & .app, .cmd {
+      padding: 0 4px;
+
+      &.selected {
+        background-color: $blue;
+      }
+    }
+  }
+}

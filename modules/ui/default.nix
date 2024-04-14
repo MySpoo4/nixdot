@@ -1,5 +1,0 @@
-[ 
-  ./ags
-  ./hyprland
-  ./waybar
-]

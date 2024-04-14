@@ -19,19 +19,19 @@ end
 
 return {
   {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    enabled = colorscheme == "catppuccin",
-    priority = 1000,
-    config = catppuccin,
-  },
-  {
     "sainnhe/gruvbox-material",
     lazy = false,
     name = "gruvbox-material",
     enabled = colorscheme == "gruvbox-material",
     priority = 1000,
     config = gruvbox,
+  },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    enabled = colorscheme == "catppuccin",
+    priority = 1000,
+    config = catppuccin,
   },
 }

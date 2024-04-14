@@ -1,0 +1,16 @@
+.wallpapers {
+  background-color: $black;
+  color: $fg;
+  margin: 7px;
+  min-width: 320px;
+  border: 2px solid $bg1;
+
+  .list {
+    .wallpaper {
+      padding: 0 10px;
+      .wp {
+        font-size: 300px;
+      }
+    }
+  }
+}

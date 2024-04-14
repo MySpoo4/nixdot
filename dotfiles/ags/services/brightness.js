@@ -54,6 +54,6 @@ class BrightnessService extends Service {
   }
 }
 
-const Brightness = new BrightnessService();
+const brightness = new BrightnessService();
 
-export default Brightness;
+export default brightness;

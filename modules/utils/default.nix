@@ -1,5 +1,0 @@
-[
-  ./rofi
-  ./dunst
-  ./swaylock
-]

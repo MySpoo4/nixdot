@@ -1,0 +1,79 @@
+@import './modes';
+
+.statusline_window {
+  .line {
+    background-color: $black1;
+    color: $fg;
+    font-size: 14px;
+
+    .left, .center, .right {
+      label {
+        padding: .2rem 0;
+      }
+    }
+    .left {
+      .active {
+        background-color: $blue;
+        color: $bg;
+        padding: 0 1rem;
+      }
+    }
+
+    .right {
+      .divider {
+        font-weight: 600;
+      }
+      
+      .distro {
+        padding: 0 .25rem;
+      }
+
+      .battery {
+        padding: 0 .25rem;
+
+        .battery_icon {
+          font-size: 13px;
+        }
+
+        .percent {
+          padding-left: .25rem;
+        }
+      }
+
+      .user {
+        padding: 0 .6rem 0 .4rem;
+      }
+
+      .date_time {
+        background-color: $bg1;
+        color: $fg;
+        padding: 0 1rem;
+
+        .divider {
+          padding: 0 .75rem;
+        }
+      }
+
+      .mode_indicator {
+        label {
+          color: $bg;
+          padding: 0 1rem;
+        }
+
+        .workspace {
+          background-color: $green;
+          padding: 0 2rem;
+        }
+
+        .applauncher {
+          background-color: $blue;
+        }
+
+        .cmdlauncher {
+          background-color: $red;
+        }
+      }
+    }
+  }
+
+}

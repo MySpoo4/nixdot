@@ -1,4 +1,7 @@
-import Bar from './widgets/bar/bar.js';
+import StatusLine from './widgets/statusline/statusline.js';
+import SideBar from './widgets/sidebar/sidebar.js';
+import { AppLauncherMenu } from './widgets/statusline/modes/app_launcher.js';
+import Notifications from './widgets/notifications/notification_popups.js';
 
 App.resetCss();
 
@@ -9,9 +12,10 @@ Utils.exec(`sassc ${scss} ${css}`);
 App.applyCss(css);
 
 App.config({
-  icons: './assets',
   windows: () => [
-    Bar(),
+    StatusLine(),
+    SideBar(),
+    Notifications(),
   ],
 });
 
