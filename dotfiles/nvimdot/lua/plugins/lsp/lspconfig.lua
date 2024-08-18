@@ -1,5 +1,5 @@
 local config = function()
-	vim.lsp.set_log_level("debug")
+	vim.lsp.set_log_level("off")
 	-- import lspconfig plugin
 	local lspconfig = require("lspconfig")
 
@@ -104,22 +104,33 @@ local config = function()
 		},
 	})
 
-  -- configure css, scss server
+	-- configure css, scss server
 	lspconfig["cssls"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
 
-  -- configure typescript server
+	-- configure typescript server
 	lspconfig["tsserver"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+	})
+
+	lspconfig["cssls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	lspconfig["emmet_ls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = { "html", "css", "sass", "scss", "svelte" },
 	})
 end
 
 return {
 	"neovim/nvim-lspconfig",
-  enabled = false,
+	enabled = true,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",

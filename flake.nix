@@ -9,13 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nur = {                                                               # NUR Community Packages
-      url = "github:nix-community/NUR";                                   # Requires "nur.nixosModules.nur" to be added to the host modules
-    };
     
     hyprland = {                                                          # Official Hyprland Flake
-      url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,8 +27,6 @@
     nixpkgs, 
     nixos-hardware, 
     home-manager, 
-    nur, 
-    hyprland, 
     ... 
   } @ inputs:
   let
@@ -46,7 +41,7 @@
       import ./core {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager vars;
-        inherit hyprland nixos-hardware nur;
+        inherit nixos-hardware;
       }
     );
 

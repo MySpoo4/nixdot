@@ -24,7 +24,7 @@
   services.openssh.enable = true;
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
   };
@@ -66,4 +66,6 @@
       jack.enable = true;
     };
   };
+
+  programs.nix-ld.enable = true;
 }

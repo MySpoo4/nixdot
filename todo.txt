@@ -1,0 +1,10 @@
+Consider a vertical bar
+Add a fixed window size for App Launcher and Cmd Launcher
+fixed how notifications are displayed.
+  - Possibly display them through a sidebar
+Change the ways stats are display (Custom Design possibly)
+
+fix hyprland lockscreen
+consider making changes to ags
+setup tmux or zellij
+setup a default flake template for general projects

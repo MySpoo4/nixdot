@@ -50,7 +50,7 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.git;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
@@ -75,6 +75,5 @@
       monospace = [ "FiraCode" ];
     };
   };
-
   system.stateVersion = "24.05";
 }

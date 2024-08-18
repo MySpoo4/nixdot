@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # terminal
     git           # Version Control
-    #neovim          # Text Editor
+    neovim        # Text Editor
     wget          # Retriever
     nix-tree      # Browse Nix Store
     kitty

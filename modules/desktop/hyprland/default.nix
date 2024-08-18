@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  hyprland,
+  inputs,
   ...
 }:
 
@@ -11,6 +11,7 @@ in {
   programs = {
     hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true; #check this
     };
   };
@@ -19,11 +20,8 @@ in {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
     ];
   };
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   services = {
     upower.enable = true;

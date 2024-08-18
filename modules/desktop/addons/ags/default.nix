@@ -4,8 +4,10 @@ let
 in
 {
   imports = [ inputs.ags.homeManagerModules.default ];
+  programs.ags.enable = true;
+
   home.packages = with pkgs; [
-    ags
+    bun
     sassc
     gtk3
     brightnessctl

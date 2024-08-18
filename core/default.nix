@@ -3,8 +3,6 @@
   nixpkgs,
   nixos-hardware,
   home-manager,
-  nur,
-  hyprland,
   vars,
   ...
 }:
@@ -19,7 +17,7 @@ in {
   null = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system pkgs hyprland vars;
+      inherit inputs system pkgs vars;
       host = {
         hostName = "null";
       };
@@ -30,7 +28,6 @@ in {
       ./packages.nix
       ./home.nix
       ../hosts/null
-      nur.nixosModules.nur
     ];
   };
 }

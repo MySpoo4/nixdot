@@ -24,7 +24,7 @@ const SideBar = (monitor = 0) => {
     anchor: ['left', 'top', 'bottom'],
     margins: [2, 0, 2, 0],
     child: Widget.Box({
-      css: 'padding: 1px',
+      css: 'padding: .1px',
       child: Widget.Revealer({
         transition: 'slide_right',
         transition_duration: 400,

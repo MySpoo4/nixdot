@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     hyprlock
     hypridle
+    # hyprwayland-scanner
   ];
 
   wayland.windowManager.hyprland = {

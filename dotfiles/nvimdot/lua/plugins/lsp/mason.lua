@@ -23,7 +23,10 @@ local config = function()
 		ensure_installed = {
 			"rust_analyzer",
 			"lua_ls",
-      "tsserver",
+			"tsserver",
+			"svelte",
+			"emmet_ls",
+			"cssls",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -33,13 +36,14 @@ local config = function()
 		ensure_installed = {
 			"rustfmt", -- rust formatter (deprecated)
 			"stylua", -- lua formatter
+			"prettierd", -- general formatter (for ts, js, etc)
 		},
 	})
 end
 
 return {
 	"williamboman/mason.nvim",
-  enabled = false,
+	enabled = true,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

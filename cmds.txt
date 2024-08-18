@@ -1,0 +1,15 @@
+cleans nix store / should be another cmd as well
+nix-store --gc
+
+updates flake
+nix flake update
+
+switches to new configuration
+sudo nixos-rebuild switch --flake .#null
+
+swap switch with test (i think) to test configuration.
+
+to setup a flake for a project
+nix flake init -t git@github.com:MySpoo4#name_of_flake
+ex: nix flake init -t git@github.com:MySpoo4#rust
+

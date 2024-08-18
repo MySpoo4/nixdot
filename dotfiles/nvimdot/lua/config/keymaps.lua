@@ -1,8 +1,5 @@
 local mapkey = require("util.keymapper").mapkey 
 
--- Nvim-Tree
-mapkey("<leader>e", "<CMD>NvimTreeToggle<CR>", "n")
-
 -- Buffer Navigation
 mapkey("<S-h>","<CMD>bp<CR>","n") -- previous buffer
 mapkey("<S-l>","<CMD>bn<CR>","n") -- next buffer
