@@ -10,28 +10,20 @@ local gruvbox = function()
 end
 
 local catppuccin = function()
-  require("catppuccin").setup({
-    flavour = "macchiato",
-    transparent_background = false,
-  })
-  vim.cmd("colorscheme catppuccin")
+	require("catppuccin").setup({
+		flavour = "macchiato",
+		transparent_background = false,
+	})
+	vim.cmd("colorscheme catppuccin")
 end
 
 return {
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    name = "gruvbox-material",
-    enabled = colorscheme == "gruvbox-material",
-    priority = 1000,
-    config = gruvbox,
-  },
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    enabled = colorscheme == "catppuccin",
-    priority = 1000,
-    config = catppuccin,
-  },
+	{
+		"sainnhe/gruvbox-material",
+		lazy = false,
+		name = "gruvbox-material",
+		enabled = colorscheme == "gruvbox-material",
+		priority = 1000,
+		config = gruvbox,
+	},
 }

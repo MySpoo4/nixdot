@@ -5,7 +5,7 @@ let
 in {
 
   home.packages = with pkgs; [
-  	nodejs
+  	# nodejs
   ];
 
   programs.neovim = {

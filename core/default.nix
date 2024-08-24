@@ -4,12 +4,14 @@
   nixos-hardware,
   home-manager,
   vars,
+  overlays,
   ...
 }:
 let 
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
+    overlays = [ overlays.modifications ];
     config.allowUnfree = true;
   };
   lib = nixpkgs.lib;

@@ -3,7 +3,8 @@
     import ./apps ++
     import ./cli-apps ++
     import ./desktop ++
-    import ./hardware
+    import ./hardware ++
+    import ./shell
   );
 }
 # [

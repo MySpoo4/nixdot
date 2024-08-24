@@ -3,7 +3,10 @@ let
   theme = (import ../colorscheme/default.nix).theme;
 in
 {
-  programs.zellij.enable = true;
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true; # auto opens zellij
+  };
 
   xdg.configFile = {
     zellij = {
@@ -13,7 +16,7 @@ in
 
     "zellij/themes/${theme.name}.kdl".text = with theme.scheme.colors; ''
       themes {
-        ${theme.name} {
+        default {
           bg "${bg}"
           fg "${fg}"
           red "${red}"

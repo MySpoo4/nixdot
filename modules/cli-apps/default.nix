@@ -1,4 +1,5 @@
 [
-  ./tmux.nix
-  ./zellij.nix
+  ./packages.nix
+  ./fastfetch.nix
+  ./yazi.nix
 ]

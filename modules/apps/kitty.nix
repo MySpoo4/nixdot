@@ -3,10 +3,10 @@ let
   theme = (import ../colorscheme/default.nix).theme;
 in
 {
-  home.packages = with pkgs; [
-    kitty
-  ];
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableFishIntegration = true;
+  };
 
   xdg.configFile = {
     kitty = {

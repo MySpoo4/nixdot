@@ -14,7 +14,7 @@
   users.users.${vars.user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    # shell = pkgs.fish;
+    shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
 

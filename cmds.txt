@@ -10,6 +10,6 @@ sudo nixos-rebuild switch --flake .#null
 swap switch with test (i think) to test configuration.
 
 to setup a flake for a project
-nix flake init -t git@github.com:MySpoo4#name_of_flake
+nix flake init -t github:MySpoo4/nixdot#name_of_flake
 ex: nix flake init -t git@github.com:MySpoo4#rust
 

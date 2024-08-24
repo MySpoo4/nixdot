@@ -20,6 +20,16 @@
       url = "github:Aylur/ags";
     };
 
+    zellij = {
+      url = "github:zellij-org/zellij/3923bf5027493ab05b1d842659113181a58e9963";
+      # url = "github:zellij-org/zellij";
+      flake = false;
+    };
+
+    termusic = {
+      url = "github:tramhao/termusic/8ba411e00db4aca80f55305614db0c14c372";
+      flake = false;
+    };
   };
 
   outputs = { 
@@ -35,12 +45,13 @@
       terminal = "kitty";
       editor = "nvim";
     };
+    overlays = import ./overlays { inherit inputs; };
   in
   {
     nixosConfigurations = (
       import ./core {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager vars;
+        inherit inputs nixpkgs home-manager vars overlays;
         inherit nixos-hardware;
       }
     );

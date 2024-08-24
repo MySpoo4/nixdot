@@ -11,4 +11,8 @@
     path = ./node;
     description = "js/ts (node) project";
   };
+  python = {
+    path = ./python;
+    description = "python project";
+  };
 }

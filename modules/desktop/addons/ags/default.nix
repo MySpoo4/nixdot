@@ -9,7 +9,7 @@ in
   home.packages = with pkgs; [
     bun
     sassc
-    gtk3
+    # gtk3
     brightnessctl
     wl-clipboard
   ];

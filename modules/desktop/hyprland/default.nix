@@ -4,10 +4,7 @@
   inputs,
   ...
 }:
-
-let
-  exec = "exec Hyprland";
-in {
+{
   programs = {
     hyprland = {
       enable = true;
@@ -23,17 +20,7 @@ in {
     ];
   };
 
-  services = {
-    upower.enable = true;
-  };
-
   environment = {
-    loginShellInit = ''
-      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        ${exec}
-      fi
-    '';
-
     systemPackages = with pkgs; [
     ];
   };

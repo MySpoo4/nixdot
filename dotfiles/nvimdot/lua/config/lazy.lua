@@ -18,9 +18,9 @@ local colorscheme = require("util.colorscheme")
 --require("config.autocmds")
 
 local opts = {
-  install = {
-    colorscheme = { colorscheme },
-  },
+	install = {
+		colorscheme = { colorscheme },
+	},
 	rpt = {
 		disabled_plugins = {
 			"gzip",
@@ -45,14 +45,14 @@ local opts = {
 
 local imports = {
 	{
-		import = "plugins",
+	  import = "plugins",
 	},
 	{
 		import = "plugins.lsp",
 	},
-  {
-    import = "plugins.rust",
-  },
+	{
+		import = "plugins.rust",
+	},
 }
 
 require("lazy").setup(imports, opts)

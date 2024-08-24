@@ -8,3 +8,10 @@ fix hyprland lockscreen
 consider making changes to ags
 setup tmux or zellij
 setup a default flake template for general projects
+
+remove new line from starship
+
+
+add something in hyprland keybinding
+to resize you can increase and decrease multiple sides
+like zellij
