@@ -15,3 +15,13 @@ remove new line from starship
 add something in hyprland keybinding
 to resize you can increase and decrease multiple sides
 like zellij
+
+fix the wallpaper changer
+changing the default wallpaper to something other than
+bocchi the rock results in home-manager failing to rebuild
+as there is a conflict with the files.
+
+bring back focus to the present window after opening
+app launcher
+
+change systemwide theme to darkmode

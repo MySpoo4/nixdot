@@ -104,6 +104,11 @@ local config = function()
 		},
 	})
 
+	lspconfig["jdtls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	-- configure css, scss server
 	lspconfig["cssls"].setup({
 		capabilities = capabilities,

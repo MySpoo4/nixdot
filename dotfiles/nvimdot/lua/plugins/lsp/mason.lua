@@ -1,4 +1,4 @@
-local config = function()
+local config = function(_, opts)
 	-- import mason
 	local mason = require("mason")
 
@@ -8,7 +8,7 @@ local config = function()
 	local mason_tool_installer = require("mason-tool-installer")
 
 	-- enable mason and configure icons
-	mason.setup({
+  local conf = vim.tbl_deep_extend("keep", opts, {
 		ui = {
 			icons = {
 				package_installed = "✓",
@@ -16,7 +16,9 @@ local config = function()
 				package_uninstalled = "✗",
 			},
 		},
-	})
+  })
+
+	mason.setup(conf)
 
 	mason_lspconfig.setup({
 		-- list of servers for mason to install
@@ -27,6 +29,7 @@ local config = function()
 			"svelte",
 			"emmet_ls",
 			"cssls",
+			"jdtls",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -37,6 +40,8 @@ local config = function()
 			"rustfmt", -- rust formatter (deprecated)
 			"stylua", -- lua formatter
 			"prettierd", -- general formatter (for ts, js, etc)
+			"java-debug-adapter",
+			"java-test",
 		},
 	})
 end

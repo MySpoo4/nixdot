@@ -26,7 +26,7 @@ in
           magenta "${magenta}"
           orange "${orange}"
           cyan "${cyan}"
-          black "${black}"
+          black "${bg}"
           white "${white}"
         }
       }

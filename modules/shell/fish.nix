@@ -23,5 +23,9 @@ in {
 
       fish_vi_key_bindings
     '';
+
+    shellAliases = {
+      nvim-note = "NVIM_APPNAME=nvim-note nvim";
+    };
   };
 }

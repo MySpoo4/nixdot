@@ -12,7 +12,7 @@
       grey = "#7c6f64";
       grey1 = "#928374";
       grey2 = "#a89984";
-      white = "#fbf1c7";
+      white = "#ebdbb2";
       red = "#ea6962";
       orange = "#e78a43";
       yellow = "#d8a657";
@@ -25,8 +25,7 @@
 
   nvim-colorscheme = "gruvbox-material";
   gtk-theme = {
-    override = false;
-    name = "Gruvbox-Dark-B";
+    name = "Gruvbox-Dark";
     package = "gruvbox-gtk-theme";
   };
   

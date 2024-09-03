@@ -22,6 +22,15 @@ in {
     "nvim/lua/util/nix_colorscheme.lua".text = ''
        return "${theme.nvim-colorscheme}"
     '';
+
+    nvim-note = {
+      source = ../../dotfiles/nvim-note;
+      recursive = true;
+    };
+  
+    "nvim-note/lua/util/nix_colorscheme.lua".text = ''
+       return "${theme.nvim-colorscheme}"
+    '';
   };
   
   #home.packages = with pkgs; [

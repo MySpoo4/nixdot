@@ -21,7 +21,7 @@
     };
 
     zellij = {
-      url = "github:zellij-org/zellij/3923bf5027493ab05b1d842659113181a58e9963";
+      url = "github:zellij-org/zellij/240a53aa1aab6b3b58c385bccda6170606c46790";
       # url = "github:zellij-org/zellij";
       flake = false;
     };

@@ -1,6 +1,5 @@
 const Applications = await Service.import('applications');
 import { statusline_mode } from '../../shared/vars.js';
-import Gdk from 'gi://Gdk';
 
 const common = [
   'kitty',
@@ -22,9 +21,9 @@ function launchApp() {
 
 function reset() {
   const apps = Applications.query('');
-  allApps.value = [ 
-    ...apps.map(AppItem), 
-    AppItem({ name: 'none' }, -1) 
+  allApps.value = [
+    ...apps.map(AppItem),
+    AppItem({ name: 'none' }, -1)
   ];
 
   // Finds indexes of common apps to be displayed initially
@@ -49,7 +48,7 @@ function update(text) {
       if (rev) arr.push(i);
     }
   );
-  
+
   if (!arr.length) {
     revArray.value = [-1];
     selectedIndex.value = -1;
@@ -57,7 +56,7 @@ function update(text) {
     revArray.value = arr.slice(0, 10);
     selectedIndex.value = arr[0];
   }
-  
+
   revIndex = 0;
 }
 
@@ -87,6 +86,9 @@ const AppItem = (app, i) => {
         si => i === si ? 'app selected' : 'app'
       ),
       label: app.name.toLowerCase(),
+      truncate: 'end',
+      justification: 'left',
+      max_width_chars: 16,
       xalign: 0,
     }),
   });

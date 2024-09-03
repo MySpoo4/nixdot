@@ -15,4 +15,8 @@
     path = ./python;
     description = "python project";
   };
+  java = {
+    path = ./java/;
+    description = "java project";
+  };
 }

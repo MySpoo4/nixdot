@@ -45,7 +45,10 @@ local opts = {
 
 local imports = {
 	{
-	  import = "plugins",
+		import = "plugins",
+	},
+	{
+		import = "plugins.java",
 	},
 	{
 		import = "plugins.lsp",

@@ -27,18 +27,15 @@ in
   gtk = {
     enable = true;
 
-    theme = lib.mkMerge [
-      {
-        name = gtk-theme.name;
-      }
-      (lib.mkIf (gtk-theme.override) {
-        package = pkgs."${gtk-theme.package}".override(gtk-theme.attr);
-      })
-      (lib.mkIf (!gtk-theme.override) {
-        package = pkgs."${gtk-theme.package}";
-      })
-    ];
-
+    theme = {
+      name = gtk-theme.name;
+      package = pkgs."${gtk-theme.package}";
+      # name = "Gruvbox-Dark-BL";
+      # package = pkgs.gruvbox-gtk-theme;
+      # # package = pkgs.gruvbox-gtk-theme.override {
+      # #   colorVariants = [ "dark" ];
+      # # };
+    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;

@@ -5,6 +5,13 @@
     cargo
     rustc
 
+    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      pip
+      dbus-python
+    ]))
+
+    networkmanagerapplet
+    
     qbittorrent
     obs-studio
     zoom-us

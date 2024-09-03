@@ -19,6 +19,7 @@
 
     # utilities
     git
+    git-lfs
     curl
     ripgrep
     fd
