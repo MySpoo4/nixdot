@@ -16,6 +16,7 @@
     obs-studio
     zoom-us
     obsidian
+    grimblast
 
     libnotify
 

@@ -19,4 +19,10 @@ mapkey("<leader>sm", "<CMD>MaximizerToggle<CR>", "n") -- Toggle Minimize
 mapkey("<", "<gv", "v") -- Shift Indentation to Left
 mapkey(">", ">gv", "v") -- Shift Indentation to Right
 
+-- Wrap
+mapkey("<leader>uw", "<CMD>set wrap!<CR>", "n")
+
+-- Formatting
+mapkey("<leader>af", "<CMD>FormatToggle<CR>", "n")
+
 -- Comments
