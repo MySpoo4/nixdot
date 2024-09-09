@@ -11,6 +11,8 @@ in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraLuaPackages = ps: [ ps.magick ];
+    extraPackages = with pkgs; [ imagemagick ];
   };
 
   xdg.configFile = {
@@ -20,15 +22,6 @@ in {
     };
   
     "nvim/lua/util/nix_colorscheme.lua".text = ''
-       return "${theme.nvim-colorscheme}"
-    '';
-
-    nvim-note = {
-      source = ../../dotfiles/nvim-note;
-      recursive = true;
-    };
-  
-    "nvim-note/lua/util/nix_colorscheme.lua".text = ''
        return "${theme.nvim-colorscheme}"
     '';
   };

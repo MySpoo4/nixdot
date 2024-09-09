@@ -22,6 +22,7 @@ opt.signcolumn = "yes"
 opt.cmdheight = 0
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
+opt.conceallevel = 1
 
 -- Behaviour
 opt.hidden = true
