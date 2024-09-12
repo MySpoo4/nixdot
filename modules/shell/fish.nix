@@ -22,6 +22,8 @@ in {
       set -Ux STARSHIP_CACHE $XDG_CONFIG_HOME/starship/cache 
 
       fish_vi_key_bindings
+
+      direnv hook fish | source
     '';
 
     shellAliases = {

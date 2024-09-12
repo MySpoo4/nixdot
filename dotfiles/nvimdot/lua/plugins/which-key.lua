@@ -36,6 +36,7 @@ return {
 			{ "<leader>f", group = "find" },
 			{ "<leader>s", group = "split" },
 			{ "<leader>b", group = "buffers" },
+			{ "<leader>d", group = "diagnostics" },
 		})
 	end,
 }

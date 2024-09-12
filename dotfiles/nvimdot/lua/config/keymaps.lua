@@ -13,6 +13,10 @@ mapkey("<C-l>", "<C-w>l", "n") -- navigate right
 -- Window Management
 mapkey("<leader>sv", "<CMD>vsplit<CR>", "n") -- Split Vertically
 mapkey("<leader>sh", "<CMD>split<CR>", "n") -- Split Horizontally
+mapkey("<S-_>", "<CMD>horizontal resize -2<CR>", "n")
+mapkey("<S-+>", "<CMD>horizontal resize +2<CR>", "n")
+mapkey("<C-->", "<CMD>vertical resize -2<CR>", "n")
+mapkey("<C-=>", "<CMD>vertical resize +2<CR>", "n")
 mapkey("<leader>sm", "<CMD>MaximizerToggle<CR>", "n") -- Toggle Minimize
 
 -- Indenting
