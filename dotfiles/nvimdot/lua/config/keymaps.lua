@@ -27,6 +27,6 @@ mapkey(">", ">gv", "v") -- Shift Indentation to Right
 mapkey("<leader>uw", "<CMD>set wrap!<CR>", "n")
 
 -- Formatting
-mapkey("<leader>af", "<CMD>FormatToggle<CR>", "n")
-
+mapkey("<leader>af", "<CMD>FormatBufferToggle<CR>", "n")
+mapkey("<leader>aF", "<CMD>FormatGlobalToggle<CR>", "n")
 -- Comments

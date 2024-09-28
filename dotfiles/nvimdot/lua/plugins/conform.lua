@@ -11,11 +11,18 @@ local config = function()
 			return { timeout_ms = 500, lsp_format = "fallback" }
 		end,
 
-		vim.api.nvim_create_user_command("FormatToggle", function()
-			vim.b.disable_autoformat = not vim.b.disable_autoformat
-			vim.notify(string.format("Auto formatting: &s", not vim.b.disable_autoformat))
+		vim.api.nvim_create_user_command("FormatGlobalToggle", function()
+			vim.g.disable_autoformat = not vim.g.disable_autoformat
+			vim.notify(string.format("Auto global formatting: %s", tostring(not vim.g.disable_autoformat)))
 		end, {
-			desc = "Toggle autformat on save",
+			desc = "Toggle global autoformat on save",
+		}),
+
+		vim.api.nvim_create_user_command("FormatBufferToggle", function()
+			vim.b.disable_autoformat = not vim.b.disable_autoformat
+			vim.notify(string.format("Auto buffer formatting: %s", tostring(not vim.b.disable_autoformat)))
+		end, {
+			desc = "Toggle buffer autoformat on save",
 		}),
 	})
 end

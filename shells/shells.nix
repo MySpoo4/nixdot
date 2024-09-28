@@ -16,7 +16,7 @@
     description = "python project";
   };
   java = {
-    path = ./java/;
+    path = ./java;
     description = "java project";
   };
 }

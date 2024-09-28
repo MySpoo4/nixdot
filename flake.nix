@@ -20,16 +20,16 @@
       url = "github:Aylur/ags";
     };
 
-    zellij = {
-      url = "github:zellij-org/zellij/240a53aa1aab6b3b58c385bccda6170606c46790";
-      # url = "github:zellij-org/zellij";
-      flake = false;
-    };
+    # zellij = {
+    #   url = "github:zellij-org/zellij/240a53aa1aab6b3b58c385bccda6170606c46790";
+    #   # url = "github:zellij-org/zellij";
+    #   flake = false;
+    # };
 
-    termusic = {
-      url = "github:tramhao/termusic/8ba411e00db4aca80f55305614db0c14c372";
-      flake = false;
-    };
+    # termusic = {
+    #   url = "github:tramhao/termusic/8ba411e00db4aca80f55305614db0c14c372";
+    #   flake = false;
+    # };
   };
 
   outputs = { 

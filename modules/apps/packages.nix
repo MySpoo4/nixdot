@@ -4,11 +4,7 @@
     nodejs
     cargo
     rustc
-
-    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-      pip
-      dbus-python
-    ]))
+    rustup
 
     networkmanagerapplet
     
@@ -17,6 +13,7 @@
     zoom-us
     obsidian
     grimblast
+    mpv
 
     libnotify
 

@@ -11,8 +11,6 @@ in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    extraLuaPackages = ps: [ ps.magick ];
-    extraPackages = with pkgs; [ imagemagick ];
   };
 
   xdg.configFile = {

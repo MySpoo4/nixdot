@@ -65,23 +65,36 @@ local config = function()
 	end
 
 	vim.g.rustaceanvim = {
-		-- Plugin configuration
-		tools = {},
-		-- LSP configuration
 		server = {
-			on_attach = on_attach,
-			settings = {
-				-- rust-analyzer language server configuration
-				["rust-analyzer"] = {
-					cargo = {
-						allFeatures = true,
-					},
-				},
-			},
+			cmd = function()
+				local mason_registry = require("mason-registry")
+				local ra_binary = mason_registry.is_installed("rust-analyzer")
+						-- This may need to be tweaked, depending on the operating system.
+						and mason_registry.get_package("rust-analyzer"):get_install_path() .. "/rust-analyzer"
+					or "rust-analyzer"
+				return { ra_binary } -- You can add args to the list, such as '--log-file'
+			end,
 		},
-		-- DAP configuration
-		dap = {},
 	}
+
+	-- vim.g.rustaceanvim = {
+	-- 	-- Plugin configuration
+	-- 	tools = {},
+	-- 	-- LSP configuration
+	-- 	server = {
+	-- 		on_attach = on_attach,
+	-- 		settings = {
+	-- 			-- rust-analyzer language server configuration
+	-- 			["rust-analyzer"] = {
+	-- 				cargo = {
+	-- 					allFeatures = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	-- DAP configuration
+	-- 	dap = {},
+	-- }
 
 	-- configure lua server (with special settings)
 	lspconfig["lua_ls"].setup({
@@ -116,7 +129,7 @@ local config = function()
 	})
 
 	-- configure typescript server
-	lspconfig["tsserver"].setup({
+	lspconfig["ts_ls"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})

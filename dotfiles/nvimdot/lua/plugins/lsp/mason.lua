@@ -8,7 +8,7 @@ local config = function(_, opts)
 	local mason_tool_installer = require("mason-tool-installer")
 
 	-- enable mason and configure icons
-  local conf = vim.tbl_deep_extend("keep", opts, {
+	local conf = vim.tbl_deep_extend("keep", opts, {
 		ui = {
 			icons = {
 				package_installed = "✓",
@@ -16,7 +16,7 @@ local config = function(_, opts)
 				package_uninstalled = "✗",
 			},
 		},
-  })
+	})
 
 	mason.setup(conf)
 
@@ -25,7 +25,7 @@ local config = function(_, opts)
 		ensure_installed = {
 			"rust_analyzer",
 			"lua_ls",
-			"tsserver",
+			"ts_ls",
 			"svelte",
 			"emmet_ls",
 			"cssls",
@@ -42,6 +42,7 @@ local config = function(_, opts)
 			"prettierd", -- general formatter (for ts, js, etc)
 			"java-debug-adapter",
 			"java-test",
+			"codelldb",
 		},
 	})
 end
