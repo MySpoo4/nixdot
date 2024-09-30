@@ -21,6 +21,13 @@ local opts = {
 	install = {
 		colorscheme = { colorscheme },
 	},
+	ui = {
+		border = "rounded",
+		size = {
+			width = 0.8,
+			height = 0.8,
+		},
+	},
 	rpt = {
 		disabled_plugins = {
 			"gzip",

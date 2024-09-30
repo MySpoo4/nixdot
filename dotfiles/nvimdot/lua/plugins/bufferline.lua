@@ -51,7 +51,7 @@ local config = function()
 		},
 	})
 
-	function bufremove(buf)
+	local function bufremove(buf)
 		buf = buf or 0
 		buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
 
@@ -99,7 +99,6 @@ end
 return {
 	"akinsho/bufferline.nvim",
 	event = "VeryLazy",
-	keys = {},
 	version = "*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = config,

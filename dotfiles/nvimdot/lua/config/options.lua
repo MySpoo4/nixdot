@@ -6,6 +6,7 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
+opt.autoindent = true
 opt.wrap = false
 
 -- Search
@@ -19,10 +20,11 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
+opt.pumheight = 10
 opt.cmdheight = 0
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
-opt.conceallevel = 1
+opt.conceallevel = 0
 
 -- Behaviour
 opt.hidden = true

@@ -17,11 +17,15 @@ local config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
+		window = {
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }), -- previous suggestion
 			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }), -- next suggestion
-			["<C-b>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 			["<C-e>"] = cmp.mapping.abort(), -- close completion window
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -50,22 +54,20 @@ local config = function()
 		},
 	})
 
-	-- Uncomment if you want the autocomplete to open without pressing tab
-
 	-- `:` cmdline setup.
-	-- cmp.setup.cmdline(":", {
-	-- 	mapping = cmp.mapping.preset.cmdline(),
-	-- 	sources = cmp.config.sources({
-	-- 		{ name = "path" },
-	-- 	}, {
-	-- 		{
-	-- 			name = "cmdline",
-	-- 			option = {
-	-- 				ignore_cmds = { "Man", "!" },
-	-- 			},
-	-- 		},
-	-- 	}),
-	-- })
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{
+				name = "cmdline",
+				option = {
+					ignore_cmds = { "Man", "!" },
+				},
+			},
+		}),
+	})
 end
 
 return {

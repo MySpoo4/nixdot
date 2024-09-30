@@ -2,11 +2,14 @@ local config = function()
 	vim.lsp.set_log_level("off")
 	-- import lspconfig plugin
 	local lspconfig = require("lspconfig")
-
+	local lspui = require("lspconfig.ui.windows")
 	-- import cmp-nvim-lsp plugin
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 	local keymap = vim.keymap -- for conciseness
+
+	--LspInfo Borders
+	lspui.default_options.border = "rounded"
 
 	local opts = { noremap = true, silent = true }
 	local on_attach = function(client, bufnr)
@@ -64,37 +67,25 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
+	-- configuration of rustaceanvim (rust-analyzer)
 	vim.g.rustaceanvim = {
+		-- Plugin configuration
+		tools = {},
+		-- LSP configuration
 		server = {
-			cmd = function()
-				local mason_registry = require("mason-registry")
-				local ra_binary = mason_registry.is_installed("rust-analyzer")
-						-- This may need to be tweaked, depending on the operating system.
-						and mason_registry.get_package("rust-analyzer"):get_install_path() .. "/rust-analyzer"
-					or "rust-analyzer"
-				return { ra_binary } -- You can add args to the list, such as '--log-file'
-			end,
+			on_attach = on_attach,
+			settings = {
+				-- rust-analyzer language server configuration
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+					},
+				},
+			},
 		},
+		-- DAP configuration
+		dap = {},
 	}
-
-	-- vim.g.rustaceanvim = {
-	-- 	-- Plugin configuration
-	-- 	tools = {},
-	-- 	-- LSP configuration
-	-- 	server = {
-	-- 		on_attach = on_attach,
-	-- 		settings = {
-	-- 			-- rust-analyzer language server configuration
-	-- 			["rust-analyzer"] = {
-	-- 				cargo = {
-	-- 					allFeatures = true,
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	-- DAP configuration
-	-- 	dap = {},
-	-- }
 
 	-- configure lua server (with special settings)
 	lspconfig["lua_ls"].setup({
@@ -117,6 +108,7 @@ local config = function()
 		},
 	})
 
+	-- configure java server
 	lspconfig["jdtls"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,

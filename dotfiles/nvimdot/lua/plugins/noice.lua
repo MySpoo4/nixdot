@@ -1,7 +1,9 @@
-return {
-	"folke/noice.nvim",
-	event = "VeryLazy",
-	opts = {
+local config = function()
+	require("noice").setup({
+		cmdline = {
+			enabled = true,
+			view = "cmdline",
+		},
 		routes = {
 			{
 				view = "notify",
@@ -24,7 +26,13 @@ return {
 			inc_rename = false, -- enables an input dialog for inc-rename.nvim
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
-	},
+	})
+end
+
+return {
+	"folke/noice.nvim",
+	event = "VeryLazy",
+	config = config,
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",

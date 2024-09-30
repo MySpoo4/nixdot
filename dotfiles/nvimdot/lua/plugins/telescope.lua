@@ -8,11 +8,11 @@ local config = function()
 				i = {
 					["<C-j>"] = "move_selection_next",
 					["<C-k>"] = "move_selection_previous",
-          ["<C-d>"] = "delete_buffer",
+					["<C-d>"] = "delete_buffer",
 				},
-        n = {
-          ["dd"] = "delete_buffer",
-        },
+				n = {
+					["dd"] = "delete_buffer",
+				},
 			},
 		},
 		pickers = {
@@ -36,7 +36,7 @@ end
 return {
 	"nvim-telescope/telescope.nvim",
 	lazy = false,
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 	config = config,
 	keys = {
 		mapkey("<leader>fk", "<CMD>Telescope keymaps<CR>", "n"),

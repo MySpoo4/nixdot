@@ -2,8 +2,6 @@
 {
   home.packages = with pkgs; [
     nodejs
-    cargo
-    rustc
     rustup
 
     networkmanagerapplet

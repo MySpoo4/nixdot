@@ -19,8 +19,14 @@ return {
 					suggestions = 20,
 				},
 			},
+			layout = {
+				align = "center",
+			},
 			win = {
+				border = "rounded",
+				title = false,
 				padding = { 1, 2 },
+				no_overlap = true,
 			},
 			nowait = {
 				"`",
@@ -33,10 +39,12 @@ return {
 		})
 
 		which_key.add({
-			{ "<leader>f", group = "find" },
-			{ "<leader>s", group = "split" },
-			{ "<leader>b", group = "buffers" },
-			{ "<leader>d", group = "diagnostics" },
+			{ "<leader>f", group = "Find" },
+			{ "<leader>a", group = "Auto Formatting" },
+			{ "<leader>s", group = "Pane Split" },
+			{ "<leader>o", group = "Options Commands" },
+			{ "<leader>b", group = "Buffer" },
+			{ "<leader>d", group = "Diagnostics" },
 		})
 	end,
 }

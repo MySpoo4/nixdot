@@ -1,6 +1,6 @@
 local config = function()
 	require("notify").setup({
-		timeout = 3000,
+		timeout = 2000,
 		max_height = function()
 			return math.floor(vim.o.lines * 0.75)
 		end,
@@ -11,6 +11,7 @@ local config = function()
 			vim.api.nvim_win_set_config(win, { zindex = 100 })
 		end,
 	})
+
 	vim.cmd("set noshowmode")
 end
 
