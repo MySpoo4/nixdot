@@ -1,8 +1,15 @@
 local config = function()
 	require("noice").setup({
 		cmdline = {
-			enabled = true,
 			view = "cmdline",
+			format = {
+				cmdline = false,
+				search_down = { icon = "🔍⌄" },
+				search_up = { icon = "🔍⌃" },
+				filter = { icon = "$" },
+				lua = { icon = "☾" },
+				help = { icon = "?" },
+			},
 		},
 		routes = {
 			{

@@ -8,8 +8,9 @@ local config = function()
 		},
 		sections = {
 			lualine_a = { "mode" },
-			lualine_b = { "branch", "diff", "diagnostics" },
-			lualine_x = { "encoding", "filetype" },
+			lualine_b = { "filename" },
+			lualine_c = { "branch", "diff", "diagnostics" },
+			lualine_x = { "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
 		},

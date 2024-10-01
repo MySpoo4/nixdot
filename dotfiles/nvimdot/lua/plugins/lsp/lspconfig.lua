@@ -8,11 +8,15 @@ local config = function()
 
 	local keymap = vim.keymap -- for conciseness
 
-	--LspInfo Borders
+	-- LspInfo Borders
 	lspui.default_options.border = "rounded"
+	-- Vim Diagnostic Borders
+	vim.diagnostic.config({
+		float = { border = "rounded" },
+	})
 
 	local opts = { noremap = true, silent = true }
-	local on_attach = function(client, bufnr)
+	local on_attach = function(_, bufnr)
 		opts.buffer = bufnr
 
 		-- set keybinds

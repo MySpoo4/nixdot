@@ -1,6 +1,7 @@
 local config = function()
 	require("notify").setup({
-		timeout = 2000,
+		timeout = 3000,
+		render = "wrapped-compact",
 		max_height = function()
 			return math.floor(vim.o.lines * 0.75)
 		end,
@@ -24,6 +25,11 @@ return {
 				require("notify").dismiss({ silent = true, pending = true })
 			end,
 			desc = "Dismiss all Notifications",
+		},
+		{
+			"<leader>uh",
+			"<CMD>Telescope notify<CR>",
+			desc = "Show all Notifications (Telescope)",
 		},
 	},
 	config = config,

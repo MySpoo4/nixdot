@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     nodejs
-    rustup
+    # rustup
 
     networkmanagerapplet
     
