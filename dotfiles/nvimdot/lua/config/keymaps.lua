@@ -1,12 +1,8 @@
 local mapkey = require("util.keymapper").mapkey
 
 -- Remapping gj and gk for wrapped lines
-mapkey("j", "gj", "n", { desc = "Down In Wrap" })
-mapkey("k", "gk", "n", { desc = "Up In Wrap" })
-
--- Buffer Navigation
-mapkey("<S-h>", "<CMD>bp<CR>", "n", { desc = "Next buffer" }) -- previous buffer
-mapkey("<S-l>", "<CMD>bn<CR>", "n", { desc = "Previous Buffer" }) -- next buffer
+mapkey("k", "v:count == 0 ? 'gk':'k'", "n", { desc = "Up", expr = true })
+mapkey("j", "v:count == 0 ? 'gj':'j'", "n", { desc = "Down", expr = true })
 
 -- Split Navigation
 mapkey("<C-h>", "<C-w>h", "n", { desc = "Focus Left" }) -- navigate left
@@ -29,20 +25,23 @@ mapkey("<leader>j", "<CMD>cnext<CR>zz", "n", { desc = "QuickFixList Next" })
 mapkey("<leader>k", "<CMD>cprev<CR>zz", "n", { desc = "QuickFixList Previous" })
 
 -- Nvim Options and Commands
-mapkey("<leader>ow", ":set wrap<cr>", "n", { desc = "Wrap Lines" })
-mapkey("<leader>oW", ":set nowrap<cr>", "n", { desc = "Unwrap Lines" })
-mapkey("<leader>ol", ":set linebreak<cr>", "n", { desc = "Break Lines" })
-mapkey("<leader>oL", ":set nolinebreak<cr>", "n", { desc = "Unbreak Lines" })
-mapkey("<leader>os", ":set spell<cr>", "n", { desc = "Spell Check On" })
-mapkey("<leader>oS", ":set nospell<cr>", "n", { desc = "Spell Check Off" })
-mapkey("<leader>oh", ":nohlsearch<cr>", "n", { desc = "Disable Search Highlight" })
-mapkey("<leader>oH", ":set hlsearch<cr>", "n", { desc = "Enable Search Highlight" })
-mapkey("<leader>op", ":pwd<cr>", "n", { desc = "Current Working Directory" })
+mapkey("<leader>ow", function()
+	vim.opt.wrap = not vim.o.wrap
+	vim.notify(string.format("Word Wrap: %s", tostring(vim.o.wrap)))
+end, "n", { desc = "Toggle Wrap" })
+
+mapkey("<leader>ol", function()
+	vim.opt.linebreak = not vim.o.linebreak
+	vim.notify(string.format("Linebreak: %s", tostring(vim.o.linebreak)))
+end, "n", { desc = "Toggle Linebreak" })
+
+mapkey("<leader>os", function()
+	vim.opt.spell = not vim.o.spell
+	vim.notify(string.format("Spell Check: %s", tostring(vim.o.spell)))
+end, "n", { desc = "Toggle Spell Check" })
+
+mapkey("<leader>op", "<CMD>pwd<CR>", "n", { desc = "Current Working Directory" })
 
 -- Indenting
 mapkey("<", "<gv", "v", { desc = "Indent >" }) -- Shift Indentation to Left
 mapkey(">", ">gv", "v", { desc = "Indent <" }) -- Shift Indentation to Right
-
--- Formatting
-mapkey("<leader>af", "<CMD>FormatBufferToggle<CR>", "n")
-mapkey("<leader>aF", "<CMD>FormatGlobalToggle<CR>", "n")

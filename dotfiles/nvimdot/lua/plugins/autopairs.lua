@@ -3,13 +3,6 @@ local config = function()
 	local nvim_autopairs_completion = require("nvim-autopairs.completion.cmp")
 	local cmp = require("cmp")
 
-	-- local npairs = require("nvim-autopairs")
-	-- local rule = require("nvim-autopairs.rule")
-	-- local cond = require("nvim-autopairs.conds")
-	--
-	-- -- for || (rust closures, etc)
-	-- npairs.add_rules({ rule("|", "|", { "rust", "go", "lua" }):with_move(cond.after_regex("|")) })
-
 	nvim_autopairs.setup({
 		check_ts = true,
 		map_cr = true, --  map <CR> on insert mode

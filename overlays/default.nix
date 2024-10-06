@@ -7,7 +7,7 @@
     #   cargoDeps = previousAttrs.cargoDeps.overrideAttrs {
     #     name = "${previousAttrs.pname}-${version}-vendor.tar.gz";
     #     inherit src;
-    #     outputHash = "sha256-0O+9Om4JA4YQW+gkoQW3t1ZaTSv3N5Tv/xP2ri3Sc2Q=";
+    #     outputHash = "sha256-FPYnYQwNu5QilY9ju2zd7M8unNQSrG4AkOwYg2BBvUc=";
     #   };
     # });
 

@@ -1,0 +1,22 @@
+tab_template name="ui" {
+  pane size=1 borderless=true {
+    plugin location="zellij:compact-bar"
+  }
+  pane split_direction="vertical" {
+    pane
+    children
+  }
+}
+
+swap_tiled_layout name="dev" {
+  ui max_panes=5 {
+    pane split_direction="horizontal" {
+      children
+    }
+  }
+  ui min_panes=6 {
+    pane stacked=true {
+      children
+    }
+  }
+}

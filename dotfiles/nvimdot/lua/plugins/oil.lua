@@ -1,16 +1,18 @@
+local mapkey = require("util.keymapper").mapkey
+
 local config = function()
 	require("oil").setup({
 		use_default_keymaps = false,
+		constrain_cursor = "name",
 		keymaps = {
 			["<ENTER>"] = "actions.select",
 			["g."] = "actions.toggle_hidden",
 			["<C-p>"] = "actions.preview",
+			["<C-r>"] = "actions.refresh",
 			["<ESC>"] = {
 				function()
-					if vim.o.filetype == "oil" then
-						require("oil").discard_all_changes()
-						require("oil").close()
-					end
+					require("oil").discard_all_changes()
+					require("oil").close()
 				end,
 				mode = "n",
 				nowait = true,
@@ -18,8 +20,6 @@ local config = function()
 			},
 		},
 	})
-
-	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 end
 
 return {
@@ -27,4 +27,7 @@ return {
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = config,
+	key = {
+		mapkey("-", "<CMD>Oil<CR>", "n", { desc = "Open Parent Dir" }),
+	},
 }

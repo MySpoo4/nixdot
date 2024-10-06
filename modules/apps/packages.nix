@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     nodejs
-    # rustup
 
     networkmanagerapplet
     
@@ -12,6 +11,7 @@
     obsidian
     grimblast
     mpv
+    alacritty
 
     libnotify
 

@@ -21,11 +21,11 @@
     };
 
     # zellij = {
-    #   url = "github:zellij-org/zellij/240a53aa1aab6b3b58c385bccda6170606c46790";
+    #   url = "github:zellij-org/zellij/4ac7d0865891ac06d10b9a45d467249f105bd29e";
     #   # url = "github:zellij-org/zellij";
     #   flake = false;
     # };
-
+    #
     # termusic = {
     #   url = "github:tramhao/termusic/8ba411e00db4aca80f55305614db0c14c372";
     #   flake = false;

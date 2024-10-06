@@ -1,3 +1,5 @@
+local mapkey = require("util.keymapper").mapkey
+
 local config = function()
 	require("noice").setup({
 		cmdline = {
@@ -8,7 +10,7 @@ local config = function()
 				search_up = { icon = "🔍⌃" },
 				filter = { icon = "$" },
 				lua = { icon = "☾" },
-				help = { icon = "?" },
+				help = false,
 			},
 		},
 		routes = {
@@ -24,6 +26,11 @@ local config = function()
 				["vim.lsp.util.stylize_markdown"] = true,
 				["cmp.entry.get_documentation"] = true,
 			},
+			signature = {
+				auto_open = {
+					throttle = 200, -- delay longer
+				},
+			},
 		},
 		-- you can enable a preset for easier configuration
 		presets = {
@@ -31,9 +38,21 @@ local config = function()
 			command_palette = true, -- position the cmdline and popupmenu together
 			long_message_to_split = true, -- long messages will be sent to a split
 			inc_rename = false, -- enables an input dialog for inc-rename.nvim
-			lsp_doc_border = false, -- add a border to hover docs and signature help
+			lsp_doc_border = true, -- add a border to hover docs and signature help
 		},
 		views = {
+			-- for signature and doc
+			hover = {
+				border = {
+					style = "single",
+				},
+				size = {
+					-- prevents window from being to wide
+					max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.6),
+					-- prevents window from being to tall
+					max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.6),
+				},
+			},
 			mini = {
 				win_options = {
 					winblend = 0,
@@ -41,11 +60,25 @@ local config = function()
 			},
 		},
 	})
+
+	-- Lsp Hover Doc Scrolling
+	mapkey("<C-f>", function()
+		if not require("noice.lsp").scroll(4) then
+			return "<C-f>"
+		end
+	end, { "n", "i", "s" }, { desc = "Scroll Doc Down" })
+
+	mapkey("<C-d>", function()
+		if not require("noice.lsp").scroll(-4) then
+			return "<C-d>"
+		end
+	end, { "n", "i", "s" }, { desc = "Scroll Doc Up" })
 end
 
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
+	enabled = true,
 	config = config,
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

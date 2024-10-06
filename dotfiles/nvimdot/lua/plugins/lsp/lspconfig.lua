@@ -2,6 +2,7 @@ local config = function()
 	vim.lsp.set_log_level("off")
 	-- import lspconfig plugin
 	local lspconfig = require("lspconfig")
+	-- import lsconfig ui
 	local lspui = require("lspconfig.ui.windows")
 	-- import cmp-nvim-lsp plugin
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -9,10 +10,10 @@ local config = function()
 	local keymap = vim.keymap -- for conciseness
 
 	-- LspInfo Borders
-	lspui.default_options.border = "rounded"
+	lspui.default_options.border = "single"
 	-- Vim Diagnostic Borders
 	vim.diagnostic.config({
-		float = { border = "rounded" },
+		float = { border = "single" },
 	})
 
 	local opts = { noremap = true, silent = true }
@@ -144,8 +145,8 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	enabled = true,
 	event = { "BufReadPre", "BufNewFile" },
+	-- enabled = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },

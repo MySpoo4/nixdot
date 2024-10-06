@@ -1,9 +1,3 @@
-local vim_modes = {
-	n = "n",
-	i = "i",
-	v = "v",
-}
-
 local default_opts = {
 	noremap = true,
 	silent = true,
@@ -22,36 +16,16 @@ local get_opts = function(opts)
 	return all_opts
 end
 
---- @param vimmode (string|nil)
---- @return string
-local get_mode = function(vimmode)
-	local modeString = vim_modes[vimmode]
-	if modeString == nil then
-		return "n"
-	else
-		return modeString
-	end
-end
-
---- @param command (string)
---- @return string
--- maybe change remove get_cmd_string
-local get_cmd_string = function(command)
-	return [[<cmd>]] .. command .. [[<CR>]]
-end
-
 --- @param keymaps string String
---- @param command string String
---- @param vimmode (string|nil)
+--- @param command (string|function) String|function
+--- @param vimmode (string|table)
 --- @param options (table|nil)
 --- @return nil
 local mapkey = function(keymaps, command, vimmode, options)
-	local mode = get_mode(vimmode)
 	local lhs = keymaps
-	-- local rhs = get_cmd_string(command)
-  local rhs = command
+	local rhs = command
 	local opts = get_opts(options)
-	vim.keymap.set(mode, lhs, rhs, opts)
+	vim.keymap.set(vimmode, lhs, rhs, opts)
 end
 
 return { mapkey = mapkey }

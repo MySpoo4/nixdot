@@ -1,12 +1,31 @@
 local config = function()
 	local cmp = require("cmp")
-
 	local luasnip = require("luasnip")
-
-	local lspkind = require("lspkind")
 
 	-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 	require("luasnip.loaders.from_vscode").lazy_load()
+
+	local function format(_, item)
+		local MAX_LABEL_WIDTH = math.floor(vim.api.nvim_win_get_width(0) * 0.4)
+		local MIN_LABEL_WIDTH = 10
+		local ELLIPSIS = "..."
+		local function whitespace(max, len)
+			return (" "):rep(max - len)
+		end
+
+		-- Limit content width.
+		local content = item.abbr
+		local truncated = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH)
+		if truncated ~= content then
+			item.abbr = truncated .. ELLIPSIS
+		elseif string.len(content) < MIN_LABEL_WIDTH then
+			item.abbr = content .. whitespace(MIN_LABEL_WIDTH, #content)
+		end
+
+		-- Remove gibberish.
+		item.menu = nil
+		return item
+	end
 
 	cmp.setup({
 		completion = {
@@ -18,8 +37,18 @@ local config = function()
 			end,
 		},
 		window = {
-			completion = cmp.config.window.bordered(),
-			documentation = cmp.config.window.bordered(),
+			completion = cmp.config.window.bordered({
+				scrollbar = true,
+				border = "single",
+				side_padding = 0,
+			}),
+			documentation = cmp.config.window.bordered({
+				scrollbar = true,
+				border = "single",
+				side_padding = 1,
+				max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.4),
+				max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5),
+			}),
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }), -- previous suggestion
@@ -37,12 +66,13 @@ local config = function()
 			{ name = "buffer" }, -- text within current buffer
 			{ name = "path" }, -- file system paths
 		}),
-		-- configure lspkind for vs-code like pictograms in completion menu
 		formatting = {
-			format = lspkind.cmp_format({
-				maxwidth = 50,
-				ellipsis_char = "...",
-			}),
+			fields = { "abbr", "kind" },
+			format = format,
+		},
+		performance = {
+			debounce = 100,
+			max_view_entries = 10,
 		},
 	})
 
@@ -80,7 +110,6 @@ return {
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
-		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
 	config = config,
 }

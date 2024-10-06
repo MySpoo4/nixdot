@@ -1,10 +1,15 @@
 theme "default"
 default_shell "fish"
 
-// changed later when more experienced
-// default_layout "compact"
+default_layout "default"
 simplified_ui true
-pane_frames true
+pane_frames false
+
+ui {
+  pane_frames {
+    hide_session_name true
+  }
+}
 
 // allows for session ressurection
 // bugged right now
@@ -50,7 +55,7 @@ keybinds clear-defaults=true {
     bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0;}
   }
   move {
-      bind "Ctrl b" { SwitchToMode "Normal"; }
+      bind "Ctrl m" { SwitchToMode "Normal"; }
       bind "n" "Tab" { MovePane; }
       bind "p" { MovePaneBackwards; }
       bind "h" "Left" { MovePane "Left"; }
@@ -87,14 +92,14 @@ keybinds clear-defaults=true {
       bind "j" "Down" { ScrollDown; }
       bind "k" "Up" { ScrollUp; }
       bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-      bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-      bind "d" { HalfPageScrollDown; }
-      bind "u" { HalfPageScrollUp; }
+      bind "Ctrl d" "PageUp" "Left" "h" { PageScrollUp; }
+      bind "f" { HalfPageScrollDown; }
+      bind "d" { HalfPageScrollUp; }
       // uncomment this and adjust key if using copy_on_select=false
       // bind "Alt c" { Copy; }
   }
   search {
-      bind "Ctrl s" { SwitchToMode "Normal"; }
+      bind "Ctrl s" "q" { SwitchToMode "Normal"; }
       bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
       bind "j" "Down" { ScrollDown; }
       bind "k" "Up" { ScrollUp; }
@@ -102,8 +107,8 @@ keybinds clear-defaults=true {
       bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
       bind "d" { HalfPageScrollDown; }
       bind "u" { HalfPageScrollUp; }
-      bind "n" { Search "down"; }
-      bind "p" { Search "up"; }
+      bind "f" { Search "down"; }
+      bind "d" { Search "up"; }
       bind "c" { SearchToggleOption "CaseSensitivity"; }
       bind "w" { SearchToggleOption "Wrap"; }
       bind "o" { SearchToggleOption "WholeWord"; }
@@ -174,14 +179,14 @@ keybinds clear-defaults=true {
       bind "Ctrl t" { SwitchToMode "Tab"; }
   }
   shared_except "move" "locked" {
-      bind "Ctrl b" { SwitchToMode "Move"; }
+      bind "Ctrl m" { SwitchToMode "Move"; }
   }
 }
 
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-    session-manager { path "session-manager"; }
+  tab-bar { path "tab-bar"; }
+  status-bar { path "status-bar"; }
+  strider { path "strider"; }
+  compact-bar { path "compact-bar"; }
+  session-manager { path "session-manager"; }
 }

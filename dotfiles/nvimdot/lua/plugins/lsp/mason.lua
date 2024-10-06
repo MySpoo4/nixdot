@@ -15,7 +15,7 @@ local config = function(_, opts)
 				package_pending = "➜",
 				package_uninstalled = "✗",
 			},
-			border = "rounded",
+			border = "single",
 			width = 0.8,
 			height = 0.8,
 		},
@@ -52,7 +52,6 @@ end
 
 return {
 	"williamboman/mason.nvim",
-	enabled = true,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
