@@ -1,9 +1,5 @@
 local config = function()
 	local cmp = require("cmp")
-	local luasnip = require("luasnip")
-
-	-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-	require("luasnip.loaders.from_vscode").lazy_load()
 
 	local function format(_, item)
 		local MAX_LABEL_WIDTH = math.floor(vim.api.nvim_win_get_width(0) * 0.4)
@@ -31,11 +27,11 @@ local config = function()
 		completion = {
 			completeopt = "menu,menuone,preview,noselect",
 		},
-		snippet = { -- configure how nvim-cmp interacts with snippet engine
-			expand = function(args)
-				luasnip.lsp_expand(args.body)
-			end,
-		},
+		-- snippet = { -- configure how nvim-cmp interacts with snippet engine
+		-- 	expand = function(args)
+		-- 		luasnip.lsp_expand(args.body)
+		-- 	end,
+		-- },
 		window = {
 			completion = cmp.config.window.bordered({
 				scrollbar = true,
@@ -62,7 +58,6 @@ local config = function()
 		-- sources for autocompletion
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
-			{ name = "luasnip" }, -- snippets
 			{ name = "buffer" }, -- text within current buffer
 			{ name = "path" }, -- file system paths
 		}),
@@ -71,7 +66,7 @@ local config = function()
 			format = format,
 		},
 		performance = {
-			debounce = 100,
+			-- debounce = 100,
 			max_view_entries = 10,
 		},
 	})
@@ -107,8 +102,6 @@ return {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
 		"hrsh7th/cmp-cmdline", -- source for cmd line cmp
-		"L3MON4D3/LuaSnip", -- snippet engine
-		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
 	},
 	config = config,

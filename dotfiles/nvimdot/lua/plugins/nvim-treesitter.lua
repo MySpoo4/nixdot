@@ -7,10 +7,6 @@ local config = function()
 		autotag = {
 			enable = true,
 		},
-		event = {
-			"BufReadPre",
-			"BufNewFile",
-		},
 		ensure_installed = {
 			"rust",
 			"javascript",
@@ -37,11 +33,25 @@ local config = function()
 				node_decremental = "<BS>",
 			},
 		},
+		textobjects = {
+			move = {
+				enable = true,
+				goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+				goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+				goto_previous_start = {
+					["[f"] = "@function.outer",
+					["[c"] = "@class.outer",
+					["[a"] = "@parameter.inner",
+				},
+				goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+			},
+		},
 	})
 end
 
 return {
 	"nvim-treesitter/nvim-treesitter",
-	lazy = false,
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	config = config,
 }

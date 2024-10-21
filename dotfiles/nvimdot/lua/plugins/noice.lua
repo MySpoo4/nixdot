@@ -28,7 +28,7 @@ local config = function()
 			},
 			signature = {
 				auto_open = {
-					throttle = 200, -- delay longer
+					throttle = 100, -- delay longer
 				},
 			},
 		},
@@ -78,7 +78,6 @@ end
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	enabled = true,
 	config = config,
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

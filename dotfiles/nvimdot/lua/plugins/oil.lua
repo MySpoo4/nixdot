@@ -11,8 +11,10 @@ local config = function()
 			["<C-r>"] = "actions.refresh",
 			["<ESC>"] = {
 				function()
-					require("oil").discard_all_changes()
-					require("oil").close()
+					if vim.bo.filetype == "oil" then
+						require("oil").discard_all_changes()
+						require("oil").close()
+					end
 				end,
 				mode = "n",
 				nowait = true,

@@ -27,6 +27,7 @@ local opts = {
 			width = 0.8,
 			height = 0.8,
 		},
+		backdrop = 100,
 	},
 	rpt = {
 		disabled_plugins = {
@@ -55,13 +56,13 @@ local imports = {
 		import = "plugins",
 	},
 	{
-		import = "plugins.java",
-	},
-	{
 		import = "plugins.lsp",
 	},
 	{
 		import = "plugins.rust",
+	},
+	{
+		import = "plugins.java",
 	},
 }
 

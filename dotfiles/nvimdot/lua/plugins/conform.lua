@@ -6,6 +6,7 @@ local config = function()
 			lua = { "stylua" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			python = { "black" },
 		},
 
 		format_on_save = function(bufnr)

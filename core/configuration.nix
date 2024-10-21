@@ -13,7 +13,7 @@
 
   users.users.${vars.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
@@ -55,6 +55,14 @@
       keep-outputs = true
       keep-derivations = true
     '';
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   fonts = {

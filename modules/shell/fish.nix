@@ -25,9 +25,5 @@ in {
 
       direnv hook fish | source
     '';
-
-    shellAliases = {
-      nvim-note = "NVIM_APPNAME=nvim-note nvim";
-    };
   };
 }

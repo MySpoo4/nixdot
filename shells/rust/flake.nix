@@ -19,6 +19,8 @@
       name = "rust";
       default = pkgs.mkShell {
         packages = with pkgs; [
+          pkg-config
+          openssl
         ];
         buildInputs = with pkgs; [
           (rust-bin.beta.latest.default.override {

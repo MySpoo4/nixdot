@@ -25,6 +25,7 @@ local config = function()
 			},
 			buffers = require("telescope.themes").get_ivy({
 				initial_mode = "normal",
+				sort_mru = true,
 				layout_config = {
 					height = 0.30,
 				},

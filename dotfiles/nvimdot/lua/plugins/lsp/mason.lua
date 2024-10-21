@@ -29,6 +29,7 @@ local config = function(_, opts)
 			"rust_analyzer",
 			"lua_ls",
 			"ts_ls",
+			"pyright",
 			"svelte",
 			"emmet_ls",
 			"cssls",
@@ -43,6 +44,7 @@ local config = function(_, opts)
 			"rustfmt", -- rust formatter (deprecated)
 			"stylua", -- lua formatter
 			"prettierd", -- general formatter (for ts, js, etc)
+			"black", -- python formatter
 			"java-debug-adapter",
 			"java-test",
 			"codelldb",

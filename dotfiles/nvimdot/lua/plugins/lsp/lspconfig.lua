@@ -1,5 +1,7 @@
 local config = function()
 	vim.lsp.set_log_level("off")
+	-- vim.lsp.set_log_level("debug")
+
 	-- import lspconfig plugin
 	local lspconfig = require("lspconfig")
 	-- import lsconfig ui
@@ -131,6 +133,12 @@ local config = function()
 		on_attach = on_attach,
 	})
 
+	-- configure python server
+	lspconfig["pyright"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	lspconfig["cssls"].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
@@ -146,10 +154,8 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	-- enabled = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = config,
 }

@@ -24,8 +24,8 @@ end
 
 return {
 	"rcarriga/nvim-notify",
+	-- enabled = false,
 	config = config,
-	lazy = false,
 	keys = {
 		mapkey("<leader>nd", "<CMD>NotificationsDismiss<CR>", "n", { desc = "Dismiss all Notifications" }),
 		mapkey("<leader>nh", "<CMD>Telescope notify<CR>", "n", { desc = "Show all Notifications (Telescope)" }),

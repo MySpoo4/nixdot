@@ -10,6 +10,12 @@ mapkey("<C-j>", "<C-w>j", "n", { desc = "Focus Down" }) -- navigate down
 mapkey("<C-k>", "<C-w>k", "n", { desc = "Focus Up" }) -- navigate up
 mapkey("<C-l>", "<C-w>l", "n", { desc = "Focus Right" }) -- navigate right
 
+-- -- insert mode split navigation
+-- mapkey("<C-h>", "<ESC><C-w>h", "i", { desc = "Focus Left" }) -- navigate left
+-- mapkey("<C-j>", "<ESC><C-w>j", "i", { desc = "Focus Down" }) -- navigate down
+-- mapkey("<C-k>", "<ESC><C-w>k", "i", { desc = "Focus Up" }) -- navigate up
+-- mapkey("<C-l>", "<ESC><C-w>l", "i", { desc = "Focus Right" }) -- navigate right
+
 -- Window Management
 mapkey("<leader>sv", "<CMD>split<CR>", "n", { desc = "Split Vertically" }) -- Split Vertically
 mapkey("<leader>sh", "<CMD>vsplit<CR>", "n", { desc = "Split Horizontally" }) -- Split Horizontally
