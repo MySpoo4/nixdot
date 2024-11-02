@@ -102,7 +102,7 @@ return {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
 		"hrsh7th/cmp-cmdline", -- source for cmd line cmp
-		"rafamadriz/friendly-snippets", -- useful snippets
+		-- "rafamadriz/friendly-snippets", -- useful snippets
 	},
 	config = config,
 }

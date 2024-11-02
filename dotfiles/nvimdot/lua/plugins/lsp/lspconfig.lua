@@ -6,8 +6,6 @@ local config = function()
 	local lspconfig = require("lspconfig")
 	-- import lsconfig ui
 	local lspui = require("lspconfig.ui.windows")
-	-- import cmp-nvim-lsp plugin
-	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 	local keymap = vim.keymap -- for conciseness
 
@@ -64,7 +62,7 @@ local config = function()
 	end
 
 	-- used to enable autocompletion (assign to every lsp server config)
-	local capabilities = cmp_nvim_lsp.default_capabilities()
+	local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 	-- Change the Diagnostic symbols in the sign column (gutter)
 	-- (not in youtube nvim video)
@@ -133,6 +131,11 @@ local config = function()
 		on_attach = on_attach,
 	})
 
+	lspconfig["svelte"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	-- configure python server
 	lspconfig["pyright"].setup({
 		capabilities = capabilities,
@@ -154,8 +157,6 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-	},
+	dependencies = { "saghen/blink.cmp" },
 	config = config,
 }

@@ -21,10 +21,11 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.pumheight = 10
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 opt.scrolloff = 10
 opt.sidescrolloff = 20
 opt.showmode = false
+opt.showcmd = false
 opt.completeopt = "menuone,noinsert,noselect"
 
 -- Behaviour
@@ -46,3 +47,35 @@ opt.modifiable = true
 opt.guicursor =
 	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 opt.encoding = "UTF-8"
+--
+-- vim.opt.guicursor = ""
+--
+-- vim.opt.nu = true
+-- vim.opt.relativenumber = true
+--
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+--
+-- vim.opt.smartindent = true
+--
+-- vim.opt.wrap = false
+--
+-- vim.opt.swapfile = false
+-- vim.opt.backup = false
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.undofile = true
+--
+-- vim.opt.hlsearch = false
+-- vim.opt.incsearch = true
+--
+-- vim.opt.termguicolors = true
+--
+-- vim.opt.scrolloff = 8
+-- vim.opt.signcolumn = "yes"
+-- vim.opt.isfname:append("@-@")
+--
+-- vim.opt.updatetime = 50
+--
+-- vim.opt.colorcolumn = "80"

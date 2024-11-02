@@ -24,7 +24,7 @@ end
 
 return {
 	"rcarriga/nvim-notify",
-	-- enabled = false,
+	enabled = false,
 	config = config,
 	keys = {
 		mapkey("<leader>nd", "<CMD>NotificationsDismiss<CR>", "n", { desc = "Dismiss all Notifications" }),

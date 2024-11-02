@@ -18,6 +18,7 @@ local config = function()
 			"lua",
 			"gitignore",
 			"toml",
+			"svelte",
 		},
 		auto_install = true,
 		highlight = {

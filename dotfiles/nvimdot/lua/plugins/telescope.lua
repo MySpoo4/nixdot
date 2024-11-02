@@ -3,8 +3,11 @@ local mapkey = require("util.keymapper").mapkey
 local config = function()
 	local telescope = require("telescope")
 	telescope.setup({
-		defaults = require("telescope.themes").get_dropdown({
+		defaults = require("telescope.themes").get_ivy({
 			preview = false,
+			layout_config = {
+				height = 0.30,
+			},
 			mappings = {
 				i = {
 					["<C-j>"] = "move_selection_next",
@@ -23,21 +26,18 @@ local config = function()
 			live_grep = {
 				previewer = true,
 			},
-			buffers = require("telescope.themes").get_ivy({
+			buffers = {
 				initial_mode = "normal",
 				sort_mru = true,
-				layout_config = {
-					height = 0.30,
+			},
+			mappings = {
+				i = {
+					["<C-d>"] = "delete_buffer",
 				},
-				mappings = {
-					i = {
-						["<C-d>"] = "delete_buffer",
-					},
-					n = {
-						["dd"] = "delete_buffer",
-					},
+				n = {
+					["dd"] = "delete_buffer",
 				},
-			}),
+			},
 		},
 	})
 end

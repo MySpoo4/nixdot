@@ -5,7 +5,6 @@ return {
 		-- configuration of java
 		require("java").setup()
 
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap -- for conciseness
 
 		local opts = { noremap = true, silent = true }
@@ -54,7 +53,7 @@ return {
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		require("lspconfig")["jdtls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
