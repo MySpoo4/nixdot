@@ -14,6 +14,7 @@
     obsidian
     grimblast
     mpv
+    mcomix
 
     libnotify
 

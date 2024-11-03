@@ -4,5 +4,6 @@
     sshfs # edit files over ssh
     bluetuith     # bluetooth
     protonvpn-cli_2
+    lazygit
   ];
 }
