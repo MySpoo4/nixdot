@@ -2,12 +2,12 @@
 {
   modifications = final: prev: {
     # zellij = prev.zellij.overrideAttrs (previousAttrs: rec {
-    #   version = "0.41.0";
+    #   version = "0.41.1";
     #   src = inputs.zellij;
     #   cargoDeps = previousAttrs.cargoDeps.overrideAttrs {
     #     name = "${previousAttrs.pname}-${version}-vendor.tar.gz";
     #     inherit src;
-    #     outputHash = "sha256-FPYnYQwNu5QilY9ju2zd7M8unNQSrG4AkOwYg2BBvUc=";
+    #     outputHash = "sha256-RndehVhXZs181MpASYzheNK0TfikhGK05hLPQYkUtwM=";
     #   };
     # });
 

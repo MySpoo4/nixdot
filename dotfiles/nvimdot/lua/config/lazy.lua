@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("config.globals")
 require("config.options")
 require("config.keymaps")
+require("config.autocmds")
 local colorscheme = require("util.colorscheme")
---require("config.autocmds")
 
 local opts = {
 	install = {

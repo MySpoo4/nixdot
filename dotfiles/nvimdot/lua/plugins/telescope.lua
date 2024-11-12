@@ -2,6 +2,7 @@ local mapkey = require("util.keymapper").mapkey
 
 local config = function()
 	local telescope = require("telescope")
+	local actions = require("telescope.actions")
 	telescope.setup({
 		defaults = require("telescope.themes").get_ivy({
 			preview = false,
@@ -10,12 +11,14 @@ local config = function()
 			},
 			mappings = {
 				i = {
-					["<C-j>"] = "move_selection_next",
-					["<C-k>"] = "move_selection_previous",
-					["<C-q>"] = "close",
+					["<C-j>"] = actions.move_selection_next,
+					["<C-k>"] = actions.move_selection_previous,
+					-- TODO Telescope key remapping
+					-- ["<C-q>"] = actions.close,
 				},
 				n = {
-					["q"] = "close",
+					["<leader>fq"] = actions.send_to_qflist + actions.open_qflist,
+					["q"] = actions.close,
 				},
 			},
 		}),
@@ -29,13 +32,13 @@ local config = function()
 			buffers = {
 				initial_mode = "normal",
 				sort_mru = true,
-			},
-			mappings = {
-				i = {
-					["<C-d>"] = "delete_buffer",
-				},
-				n = {
-					["dd"] = "delete_buffer",
+				mappings = {
+					i = {
+						["<C-d>"] = "delete_buffer",
+					},
+					n = {
+						["dd"] = "delete_buffer",
+					},
 				},
 			},
 		},

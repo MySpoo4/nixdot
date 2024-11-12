@@ -17,7 +17,7 @@
     padding-left: 0.5rem;
     padding-top: 5px;
   }
-  
+
   .icon {
     font-size: 12px;
     margin: 0 5px 0 5px;
@@ -31,11 +31,12 @@
 
       .dir {
         color: $blue;
+
         .folder {
           font-size: 14px;
           padding-right: 4px;
         }
-        
+
         .down {
           color: $fg;
           font-size: 14px;
@@ -47,17 +48,21 @@
           padding-top: 5px;
         }
       }
-      
+
       .widget {
 
-        &.ram, &.cpu, &.disk {
+        &.ram,
+        &.cpu,
+        &.disk {
           levelbar {
             trough {
               min-height: 12px;
+
               block {
                 &.filled {
                   background-color: $fg;
                 }
+
                 &.empty {
                   background-color: transparent;
                 }
@@ -66,12 +71,14 @@
           }
         }
 
-        &.volume, &.bright {
+        &.volume,
+        &.bright {
           .slider {
             highlight {
               min-height: 12px;
               background: $fg;
             }
+
             trough {
               background: transparent;
             }

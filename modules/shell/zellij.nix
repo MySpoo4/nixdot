@@ -1,11 +1,14 @@
-{ ... }:
-let
+{ ... }: let
   theme = (import ../colorscheme/default.nix).theme;
 in
 {
   programs.zellij = {
     enable = true;
     enableFishIntegration = true; # auto opens zellij
+  };
+
+  home.sessionVariables = {
+    ZELLIJ_CONFIG_DIR = "$XDG_CONFIG_HOME/zellij";
   };
 
   xdg.configFile = {
