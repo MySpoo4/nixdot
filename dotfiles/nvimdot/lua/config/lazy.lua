@@ -59,9 +59,6 @@ local imports = {
 		import = "plugins.lsp",
 	},
 	{
-		import = "plugins.rust",
-	},
-	{
 		import = "plugins.java",
 	},
 }

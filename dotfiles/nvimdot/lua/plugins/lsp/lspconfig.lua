@@ -16,6 +16,14 @@ local config = function()
 		float = { border = "single" },
 	})
 
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "single",
+	})
+
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "single",
+	})
+
 	local opts = { noremap = true, silent = true }
 	local on_attach = function(_, bufnr)
 		opts.buffer = bufnr
@@ -72,25 +80,13 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
-	-- configuration of rustaceanvim (rust-analyzer)
-	vim.g.rustaceanvim = {
-		-- Plugin configuration
-		tools = {},
-		-- LSP configuration
-		server = {
-			on_attach = on_attach,
-			settings = {
-				-- rust-analyzer language server configuration
-				["rust-analyzer"] = {
-					cargo = {
-						allFeatures = true,
-					},
-				},
-			},
+	lspconfig["rust_analyzer"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			["rust-analyzer"] = {},
 		},
-		-- DAP configuration
-		dap = {},
-	}
+	})
 
 	-- configure lua server (with special settings)
 	lspconfig["lua_ls"].setup({

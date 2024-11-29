@@ -18,6 +18,7 @@ local config = function()
 			" ",
 		}
 	end
+
 	require("blink.cmp").setup({
 		keymap = {
 			["<CR>"] = { "accept", "fallback" },
@@ -29,20 +30,21 @@ local config = function()
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 		},
 		-- accept = { auto_brackets = { enabled = true } },
-		trigger = { signature_help = { enabled = false } },
+		trigger = { signature_help = { enabled = true } },
 		windows = {
 			autocomplete = {
 				min_width = 1,
 				max_height = 10,
 				selection = "manual",
 				border = "single",
+				draw = draw,
 				-- draw = {
 				-- 	components = {
 				-- 		label = {
 				-- 			width = { fill = true, max = 25 },
 				-- 		},
 				-- 		label_description = {
-				-- 			width = { fill = true, max = 20 },
+				-- 			width = { max = 20 },
 				-- 		},
 				-- 	},
 				-- },
