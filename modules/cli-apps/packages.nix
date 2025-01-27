@@ -8,5 +8,7 @@
     protonvpn-cli_2
     lazygit
     geckodriver # webdriver
+    chromedriver # webdriver
+    websocat
   ];
 }

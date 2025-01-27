@@ -19,4 +19,8 @@
     path = ./java;
     description = "java project";
   };
+  ocaml = {
+    path = ./ocaml;
+    description = "ocaml project";
+  };
 }

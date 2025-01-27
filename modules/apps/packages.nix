@@ -17,5 +17,6 @@
     mcomix
 
     libnotify
+    google-chrome
   ];
 }

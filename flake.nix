@@ -16,9 +16,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:Aylur/ags";
+    ags-nix = {
+      url = "github:nixos/nixpkgs?ref=nixos-24.11";
     };
+
+    ags = {
+      # url = "github:aylur/ags";
+      url = "github:aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
+      inputs.nixpkgs.follows = "ags-nix";
+      # flake = false;
+    };
+    
+    # astal = {
+    #   url = "github:aylur/astal";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # zellij = {
     #   url = "github:zellij-org/zellij/4ac7d0865891ac06d10b9a45d467249f105bd29e";

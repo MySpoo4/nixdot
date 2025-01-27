@@ -19,7 +19,7 @@ in {
   null = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system pkgs vars;
+      inherit inputs system vars;
       host = {
         hostName = "null";
       };

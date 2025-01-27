@@ -59,7 +59,6 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
     bluetooth = {
       enable = true;
       powerOnBoot = false;
@@ -69,6 +68,7 @@
   environment.systemPackages = [ pkgs.tpacpi-bat ];
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   services = {
+    pulseaudio.enable = false;
     thinkfan.enable = true;
     thermald.enable = true;
     upower.enable = true;

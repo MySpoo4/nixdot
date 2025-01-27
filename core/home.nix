@@ -10,7 +10,7 @@
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; inherit vars; };
+    extraSpecialArgs = { inherit inputs vars; };
     useGlobalPkgs = true;
     useUserPackages = true;
     users.${vars.user} = {

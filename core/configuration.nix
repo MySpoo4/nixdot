@@ -70,12 +70,8 @@
     packages = with pkgs; [
       inter
       material-design-icons
-      (nerdfonts.override { 
-        fonts = [ 
-          "FiraCode" 
-          "JetBrainsMono"
-        ]; 
-      })
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
     ];
     fontconfig.defaultFonts = {
       serif = [ "inter" ];
