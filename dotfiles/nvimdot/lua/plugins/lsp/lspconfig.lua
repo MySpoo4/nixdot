@@ -109,6 +109,18 @@ local config = function()
 		},
 	})
 
+	-- configure c/c++ server
+	lspconfig["clangd"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	-- configure ocaml server
+	lspconfig["ocamllsp"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	-- configure java server
 	lspconfig["jdtls"].setup({
 		capabilities = capabilities,

@@ -8,6 +8,7 @@ local config = function()
 			enable = true,
 		},
 		ensure_installed = {
+			"c",
 			"rust",
 			"javascript",
 			"typescript",
@@ -19,6 +20,7 @@ local config = function()
 			"gitignore",
 			"toml",
 			"svelte",
+			"ocaml",
 		},
 		auto_install = true,
 		highlight = {

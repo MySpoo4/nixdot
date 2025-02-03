@@ -23,4 +23,8 @@
     path = ./ocaml;
     description = "ocaml project";
   };
+  c = {
+    path = ./c;
+    desription = "c project";
+  };
 }

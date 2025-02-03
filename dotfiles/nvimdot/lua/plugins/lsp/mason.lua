@@ -26,6 +26,8 @@ local config = function(_, opts)
 	mason_lspconfig.setup({
 		-- list of servers for mason to install
 		ensure_installed = {
+			"ocamllsp",
+			"clangd",
 			"rust_analyzer",
 			"lua_ls",
 			"ts_ls",
@@ -41,6 +43,8 @@ local config = function(_, opts)
 
 	mason_tool_installer.setup({
 		ensure_installed = {
+			"ocamlformat",
+			"clang-format",
 			"rustfmt", -- rust formatter (deprecated)
 			"stylua", -- lua formatter
 			"prettierd", -- general formatter (for ts, js, etc)

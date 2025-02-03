@@ -18,5 +18,8 @@
 
     libnotify
     google-chrome
+
+    # sbu courses
+    R
   ];
 }

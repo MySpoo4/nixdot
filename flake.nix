@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";         # Unstable Nix Packages
+    # remove this later on
     nixos-hardware.url = "github:nixos/nixos-hardware";            # Hardware Specific Configurations
 
     home-manager = {                                                      # User Environment Manager

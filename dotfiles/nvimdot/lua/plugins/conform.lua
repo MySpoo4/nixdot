@@ -3,10 +3,12 @@ local mapkey = require("util.keymapper").mapkey
 local config = function()
 	require("conform").setup({
 		formatters_by_ft = {
+			c = { "clang-format" },
 			lua = { "stylua" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			python = { "black" },
+			ocaml = { "ocamlformat" },
 		},
 
 		format_on_save = function(bufnr)
