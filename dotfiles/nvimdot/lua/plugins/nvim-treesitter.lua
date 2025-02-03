@@ -21,6 +21,7 @@ local config = function()
 			"toml",
 			"svelte",
 			"ocaml",
+			"nix",
 		},
 		auto_install = true,
 		highlight = {

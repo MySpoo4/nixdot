@@ -2,10 +2,11 @@
 
 let
   theme = (import ../colorscheme/default.nix).theme;
-in {
+in
+{
 
   home.packages = with pkgs; [
-  	# nodejs
+    # nodejs
   ];
 
   programs.neovim = {
@@ -18,12 +19,12 @@ in {
       source = ../../dotfiles/nvimdot;
       recursive = true;
     };
-  
+
     "nvim/lua/util/nix_colorscheme.lua".text = ''
-       return "${theme.nvim-colorscheme}"
+      return "${theme.nvim-colorscheme}"
     '';
   };
-  
+
   #home.packages = with pkgs; [
   #];
 

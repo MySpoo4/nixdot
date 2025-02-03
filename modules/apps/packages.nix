@@ -6,7 +6,7 @@
     rustup
 
     networkmanagerapplet
-    
+
     qbittorrent
     obs-studio
     zoom-us

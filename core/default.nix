@@ -7,7 +7,7 @@
   overlays,
   ...
 }:
-let 
+let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
@@ -15,7 +15,8 @@ let
     config.allowUnfree = true;
   };
   lib = nixpkgs.lib;
-in {
+in
+{
   null = lib.nixosSystem {
     inherit system;
     specialArgs = {

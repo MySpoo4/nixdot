@@ -1,3 +1,6 @@
+-- Lsp servers, and formatters can be setup
+-- locally for each project instead of through mason
+
 local config = function(_, opts)
 	-- import mason
 	local mason = require("mason")
@@ -26,16 +29,8 @@ local config = function(_, opts)
 	mason_lspconfig.setup({
 		-- list of servers for mason to install
 		ensure_installed = {
-			"ocamllsp",
-			"clangd",
-			"rust_analyzer",
-			"lua_ls",
-			"ts_ls",
-			"pyright",
-			"svelte",
-			"emmet_ls",
-			"cssls",
-			"jdtls",
+			"lua_ls", -- lua (neovim config)
+			"nil_ls", -- nix (nix config)
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -43,15 +38,7 @@ local config = function(_, opts)
 
 	mason_tool_installer.setup({
 		ensure_installed = {
-			"ocamlformat",
-			"clang-format",
-			"rustfmt", -- rust formatter (deprecated)
 			"stylua", -- lua formatter
-			"prettierd", -- general formatter (for ts, js, etc)
-			"black", -- python formatter
-			"java-debug-adapter",
-			"java-test",
-			"codelldb",
 		},
 	})
 end

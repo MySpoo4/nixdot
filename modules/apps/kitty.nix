@@ -30,7 +30,7 @@ in
       bell_border_color       ${yellow}
 
       wayland_titlebar_color  ${bg}
-      
+
       active_tab_foreground   ${black}
       active_tab_background   ${fg}
       inactive_tab_foreground ${fg}
@@ -52,7 +52,7 @@ in
       #yellow 
       color3  ${yellow}
       color11 ${yellow}
-      
+
       #blue
       color4  ${blue}
       color12 ${blue}

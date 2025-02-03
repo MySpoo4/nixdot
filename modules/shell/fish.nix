@@ -1,7 +1,8 @@
 { ... }:
 let
   exec = "exec Hyprland";
-in {
+in
+{
   programs.fish = {
     enable = true;
 

@@ -28,14 +28,14 @@
     name = "Gruvbox-Dark";
     package = "gruvbox-gtk-theme";
   };
-  
+
   cursor = {
     name = "Vimix-cursors";
     package = "vimix-cursors";
     extra = false;
     size = 24;
   };
-  
+
   # cursor = {
   #   name = "Capitaine Cursors (Gruvbox)";
   #   package = "capitaine-cursors-themed";

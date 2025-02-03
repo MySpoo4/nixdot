@@ -1,10 +1,6 @@
 {
   imports = (
-    import ./apps ++
-    import ./cli-apps ++
-    import ./desktop ++
-    import ./hardware ++
-    import ./shell
+    import ./apps ++ import ./cli-apps ++ import ./desktop ++ import ./hardware ++ import ./shell
   );
 }
 # [
@@ -19,4 +15,3 @@
 #   import ./desktop ++
 #   import ./hardware
 # )
-

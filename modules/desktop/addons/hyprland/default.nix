@@ -1,11 +1,17 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   hyprland = inputs.hyprland.packages."${pkgs.system}".hyprland;
   theme = (import ../../../colorscheme/default.nix).theme;
   inherit (lib.strings) removePrefix;
 in
 {
-  
+
   home.packages = with pkgs; [
     hyprlock
     hypridle

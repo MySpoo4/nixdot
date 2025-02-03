@@ -3,9 +3,10 @@
 {
   environment.systemPackages = with pkgs; [
     # terminal
-    neovim        # Text Editor
-    wget          # Retriever
+    neovim # Text Editor
+    wget # Retriever
     kitty
+    nixfmt-rfc-style # nix formatter
 
     xdg-utils
     gtk-layer-shell

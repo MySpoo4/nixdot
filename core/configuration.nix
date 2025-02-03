@@ -13,7 +13,11 @@
 
   users.users.${vars.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
@@ -42,7 +46,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       builders-use-substitutes = true;
     };
     gc = {

@@ -45,7 +45,7 @@ in
       name = "Inter";
       size = 10;
     };
-    
+
     cursorTheme = lib.mkMerge [
       {
         name = theme.cursor.name;
@@ -65,4 +65,3 @@ in
 # 
 #󱐋
 #󰤟
-

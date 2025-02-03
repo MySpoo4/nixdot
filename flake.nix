@@ -2,16 +2,18 @@
   description = "My personal config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";         # Unstable Nix Packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
     # remove this later on
-    nixos-hardware.url = "github:nixos/nixos-hardware";            # Hardware Specific Configurations
+    nixos-hardware.url = "github:nixos/nixos-hardware"; # Hardware Specific Configurations
 
-    home-manager = {                                                      # User Environment Manager
+    home-manager = {
+      # User Environment Manager
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    hyprland = {                                                          # Official Hyprland Flake
+
+    hyprland = {
+      # Official Hyprland Flake
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       # url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +29,7 @@
       inputs.nixpkgs.follows = "ags-nix";
       # flake = false;
     };
-    
+
     # astal = {
     #   url = "github:aylur/astal";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -45,30 +47,37 @@
     # };
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
-    nixos-hardware, 
-    home-manager, 
-    ... 
-  } @ inputs:
-  let
-    vars = {
-      user = "rwan";
-      terminal = "kitty";
-      editor = "nvim";
-    };
-    overlays = import ./overlays { inherit inputs; };
-  in
-  {
-    nixosConfigurations = (
-      import ./core {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager vars overlays;
-        inherit nixos-hardware;
-      }
-    );
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      vars = {
+        user = "rwan";
+        terminal = "kitty";
+        editor = "nvim";
+      };
+      overlays = import ./overlays { inherit inputs; };
+    in
+    {
+      nixosConfigurations = (
+        import ./core {
+          inherit (nixpkgs) lib;
+          inherit
+            inputs
+            nixpkgs
+            home-manager
+            vars
+            overlays
+            ;
+          inherit nixos-hardware;
+        }
+      );
 
-    templates = import ./shells/shells.nix;
-  };
+      templates = import ./shells/shells.nix;
+    };
 }

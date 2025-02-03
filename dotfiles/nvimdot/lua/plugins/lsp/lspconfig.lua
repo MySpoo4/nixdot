@@ -93,7 +93,7 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = { -- custom settings for lua
-			Lua = {
+			["Lua"] = {
 				-- make the language server recognize "vim" global
 				diagnostics = {
 					globals = { "vim" },
@@ -104,6 +104,19 @@ local config = function()
 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 						[vim.fn.stdpath("config") .. "/lua"] = true,
 					},
+				},
+			},
+		},
+	})
+
+	-- configure nix server
+	lspconfig["nil_ls"].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			["nil"] = {
+				formatting = {
+					command = { "nixfmt" },
 				},
 			},
 		},
