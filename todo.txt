@@ -1,4 +1,3 @@
-zellij default lock keybind
 change suspend or sleep
 Consider a vertical bar
 Add a fixed window size for App Launcher and Cmd Launcher
