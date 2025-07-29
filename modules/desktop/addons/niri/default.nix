@@ -12,17 +12,22 @@
     # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
+  home.packages = with pkgs; [
+    alacritty
+    fuzzel
+  ];
+
   # systemd.user.services.niri = {
   #
   # };
 
   xdg = {
-    configFile = {
-      niri = {
-        source = ../../../dotfiles/niri;
-        recursive = true;
-      };
-    };
+    # configFile = {
+    #   niri = {
+    #     source = ../../../../dotfiles/niri;
+    #     recursive = true;
+    #   };
+    # };
 
     portal = {
       enable = true;

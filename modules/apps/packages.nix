@@ -23,6 +23,11 @@
     R
     openjdk
     vscode
-    niri
+
+    # # relm
+    # gtk4
+    # gtk4-layer-shell
+    # pkg-config
+    xwayland-satellite
   ];
 }

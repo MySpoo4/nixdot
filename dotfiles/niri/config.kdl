@@ -1,6 +1,192 @@
-include "configs/general.kdl"
-include "configs/input.kdl"
-include "configs/output.kdl"
-include "configs/layout.kdl"
-include "configs/windowrules.kdl"
-include "configs/animations.kdl"
+// Input device configuration.
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+  }
+
+  focus-follows-mouse
+  touchpad {
+    tap
+    natural-scroll
+  }
+
+  mod-key "Super"
+  // This is if niri is running inside another window manager/compositor like hyprland
+  mod-key-nested "Alt"
+}
+
+// Output device configuration
+output "eDP-1" {
+    // off
+    mode "1920x1080@60"
+    scale 1.2
+    transform "normal"
+    focus-at-startup
+    // TODO set later
+    // background-color "#003300"
+    // backdrop-color "#001100"
+}
+
+cursor {
+  hide-when-typing
+  hide-after-inactive-ms 3000
+}
+
+
+// Settings that influence how windows are positioned and sized.
+layout {
+  gaps 10
+
+  center-focused-column "never"
+
+  preset-column-widths {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+  }
+
+  default-column-width { proportion 0.5; }
+
+  focus-ring {
+    off
+  }
+  border {
+    width 3
+    active-color "#928374"
+    inactive-color "#32302f"
+    urgent-color "#ea6962"
+  }
+
+  insert-hint {
+    color "#a9b665"
+  }
+}
+
+
+// Asks the clients to omit their client-side decorations if possible.
+prefer-no-csd
+
+// Don't save screenshots
+screenshot-path null
+
+binds {
+  // shows a list of important hotkeys.
+  Mod+Shift+Slash { show-hotkey-overlay; }
+
+  // Suggested binds for running programs
+  Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+  Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+  // Mod+F hotkey-overlay-title="Open Firefox"{ spawn "firefox"; }
+
+
+  // Open/close the Overview: a zoomed-out view of workspaces and windows.
+  // You can also move the mouse into the top-left hot corner,
+  // or do a four-finger swipe up on a touchpad.
+  Mod+O repeat=false { toggle-overview; }
+
+  Mod+Q { close-window; }
+
+  // Focus column / window / workspace
+  Mod+H     { focus-column-left; }
+  Mod+L     { focus-column-right; }
+  Mod+U     { focus-workspace-down; }
+  Mod+I     { focus-workspace-up; }
+  Mod+J     { focus-window-or-workspace-down; }
+  Mod+K     { focus-window-or-workspace-up; }
+
+  Mod+Home  { focus-column-first; }
+  Mod+End   { focus-column-last; }
+
+  // Move column / window
+  Mod+Ctrl+H     { move-column-left; }
+  Mod+Ctrl+L     { move-column-right; }
+  Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+  Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+  Mod+Ctrl+U     { move-column-to-workspace-down; }
+  Mod+Ctrl+I     { move-column-to-workspace-up; }
+
+  Mod+Ctrl+Home  { move-column-to-first; }
+  Mod+Ctrl+End   { move-column-to-last; }
+
+  // Move workspace
+  Mod+Shift+U         { move-workspace-down; }
+  Mod+Shift+I         { move-workspace-up; }
+
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+  Mod+Ctrl+1 { move-column-to-workspace 1; }
+  Mod+Ctrl+2 { move-column-to-workspace 2; }
+  Mod+Ctrl+3 { move-column-to-workspace 3; }
+  Mod+Ctrl+4 { move-column-to-workspace 4; }
+  Mod+Ctrl+5 { move-column-to-workspace 5; }
+  Mod+Ctrl+6 { move-column-to-workspace 6; }
+  Mod+Ctrl+7 { move-column-to-workspace 7; }
+  Mod+Ctrl+8 { move-column-to-workspace 8; }
+  Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+  // The following binds move the focused window in and out of a column.
+  // If the window is alone, they will consume it into the nearby column to the side.
+  // If the window is already in a column, they will expel it out.
+  Mod+BracketLeft  { consume-or-expel-window-left; }
+  Mod+BracketRight { consume-or-expel-window-right; }
+
+  // Consume one window from the right to the bottom of the focused column.
+  Mod+Comma  { consume-window-into-column; }
+  // Expel the bottom window from the focused column to the right.
+  Mod+Period { expel-window-from-column; }
+
+  // Resize columns / windows
+  Mod+R { switch-preset-column-width; }
+  Mod+Shift+R { switch-preset-window-height; }
+  Mod+Ctrl+R { reset-window-height; }
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+
+  // Resize columns (horizontally)
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+
+  // Resize windows (vertically)
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+
+  // Expand the focused column to space not taken up by other fully visible columns.
+  // Makes the column "fill the rest of the space".
+  Mod+Ctrl+F { expand-column-to-available-width; }
+
+  // Center focused column
+  Mod+C { center-column; }
+
+  // Center all fully visible columns on screen.
+  Mod+Ctrl+C { center-visible-columns; }
+
+  // Move the focused window between the floating and the tiling layout.
+  Mod+V       { toggle-window-floating; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+  // Toggle tabbed column display mode.
+  // Windows in this column will appear as vertical tabs,
+  // rather than stacked on top of each other.
+  Mod+W { toggle-column-tabbed-display; }
+
+  Print { screenshot; }
+  Ctrl+Print { screenshot-screen; }
+  Alt+Print { screenshot-window; }
+
+  // The quit action will show a confirmation dialog to avoid accidental exits.
+  Mod+Shift+E { quit; }
+  
+  // Powers off the monitors. To turn them back on, do any input like
+  // moving the mouse or pressing any other key.
+  Mod+Shift+P { power-off-monitors; }
+}

@@ -10,5 +10,6 @@
     geckodriver # webdriver
     chromedriver # webdriver
     websocat
+    brightnessctl
   ];
 }
