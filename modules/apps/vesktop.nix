@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     vesktop
-    xwaylandvideobridge # needed to stream wayland apps using x11 (smthing like that)
+    vencord
   ];
 
   xdg.desktopEntries.vesktop = {

@@ -21,5 +21,8 @@
 
     # sbu courses
     R
+    openjdk
+    vscode
+    niri
   ];
 }

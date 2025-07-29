@@ -21,14 +21,17 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.pumheight = 10
--- opt.cmdheight = 0
 opt.scrolloff = 10
 opt.sidescrolloff = 20
 opt.showmode = false
 opt.showcmd = false
 opt.completeopt = "menuone,noinsert,noselect"
+-- uncomment later when telescope fixed
+-- opt.winborder = "single"
 
 -- Behaviour
+opt.wildmenu = false
+opt.wildmode = ""
 opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false

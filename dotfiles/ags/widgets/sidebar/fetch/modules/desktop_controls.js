@@ -37,13 +37,10 @@ const desktop_controls = {
             class_name: 'slider',
             draw_value: false,
             hexpand: true,
-            min: 0,
+            min: .02,
             max: 1,
             value: brightness.bind('screen_value'),
-            on_change: ({ value }) => {
-              const val = value > .05 ? value : .05;
-              brightness.screen_value = val;
-            },
+            on_change: ({ value }) => brightness.screen_value = value,
           }),
           Widget.Label(']'),         
         ],

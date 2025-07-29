@@ -1,24 +1,4 @@
--- remove draw funciton and see if it includes function signature
 local config = function()
-	local draw = function(ctx)
-		local width = math.floor(vim.api.nvim_win_get_width(0) * 0.4)
-		return {
-			" ",
-			{
-				ctx.kind_icon,
-				ctx.icon_gap,
-				hl_group = ("BlinkCmpKind" .. ctx.kind),
-			},
-			{
-				ctx.item.label,
-				fill = true,
-				hl_group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel",
-				max_width = width,
-			},
-			" ",
-		}
-	end
-
 	require("blink.cmp").setup({
 		keymap = {
 			["<CR>"] = { "accept", "fallback" },
@@ -29,51 +9,97 @@ local config = function()
 			["<C-d>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 		},
-		-- accept = { auto_brackets = { enabled = true } },
-		trigger = { signature_help = { enabled = true } },
-		windows = {
-			autocomplete = {
-				min_width = 1,
-				max_height = 10,
-				selection = "manual",
+
+		appearance = {
+			nerd_font_variant = "mono",
+		},
+
+		completion = {
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = false,
+				},
+			},
+
+			menu = {
 				border = "single",
-				draw = draw,
-				-- draw = {
-				-- 	components = {
-				-- 		label = {
-				-- 			width = { fill = true, max = 25 },
-				-- 		},
-				-- 		label_description = {
-				-- 			width = { max = 20 },
-				-- 		},
-				-- 	},
-				-- },
+				scrollbar = false,
+				max_height = 10,
+				draw = {
+					columns = { { "kind_icon" }, { "label" } },
+
+					components = {
+						label = {
+							text = function(ctx)
+								return ctx.label .. " " .. ctx.label_detail
+							end,
+
+							highlight = function(ctx)
+								-- label and label details
+								local highlights = {
+									{
+										0,
+										#ctx.label,
+										group = "BlinkCmpLabel",
+									},
+								}
+								if ctx.label_detail then
+									table.insert(highlights, {
+										#ctx.label + 1,
+										#ctx.label + 1 + #ctx.label_detail,
+										group = "BlinkCmpLabelDetail",
+									})
+								end
+
+								-- characters matched on the label by the fuzzy matcher
+								for _, idx in ipairs(ctx.label_matched_indices) do
+									table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+								end
+
+								return highlights
+							end,
+						},
+					},
+				},
 			},
 			documentation = {
-				max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.8),
-				max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.5),
-				border = "single",
+				window = { border = "single" },
+				auto_show = false,
 			},
-			signature_help = {
-				max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5),
-				max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.4),
+		},
+
+		signature = {
+			enabled = true,
+			window = {
+				show_documentation = false,
 				border = "single",
 			},
 		},
-	})
 
-	-- For setting right colors for cmp window
-	vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "NormalFloat" })
-	vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
-	vim.api.nvim_set_hl(0, "BlinkCmpLabel", { link = "None" })
-	vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { link = "Visual" })
+		cmdline = {
+			keymap = {
+				["<CR>"] = { "accept", "fallback" },
+				["<Tab>"] = { "show", "select_next" },
+				["<C-e>"] = { "hide" },
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+			},
+			completion = { menu = { auto_show = false } },
+		},
+
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+		},
+
+		fuzzy = { implementation = "rust" },
+	})
 end
 
 return {
 	"saghen/blink.cmp",
-	lazy = false, -- lazy loading handled internally
-	-- optional: provides snippets for the snippet source
-	dependencies = "rafamadriz/friendly-snippets",
-	version = "v0.*",
+	-- enabled = false,
+	dependencies = { "rafamadriz/friendly-snippets" },
+	version = "1.*",
 	config = config,
 }

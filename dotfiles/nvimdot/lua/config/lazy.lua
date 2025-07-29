@@ -58,9 +58,6 @@ local imports = {
 	{
 		import = "plugins.lsp",
 	},
-	{
-		import = "plugins.java",
-	},
 }
 
 require("lazy").setup(imports, opts)

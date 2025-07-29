@@ -1,0 +1,17 @@
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+  }
+
+  focus-follows-mouse
+  touchpad {
+    natural_scroll
+  }
+
+  mod-key "Super"
+  // This is if niri is running inside another
+  // window manager / compositor like hyprland
+  mod-key-nested "Alt"
+}

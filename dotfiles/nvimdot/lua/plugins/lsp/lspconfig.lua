@@ -1,28 +1,23 @@
 local config = function()
-	vim.lsp.set_log_level("off")
+	-- vim.lsp.set_log_level("off")
 	-- vim.lsp.set_log_level("debug")
 
-	-- import lspconfig plugin
-	local lspconfig = require("lspconfig")
-	-- import lsconfig ui
-	local lspui = require("lspconfig.ui.windows")
+	vim.diagnostic.config({
+		-- virtual_lines = {
+		-- 	current_line = true,
+		-- },
+		severity_sort = true,
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = " ",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.HINT] = "󰠠 ",
+				[vim.diagnostic.severity.INFO] = " ",
+			},
+		},
+	})
 
 	local keymap = vim.keymap -- for conciseness
-
-	-- LspInfo Borders
-	lspui.default_options.border = "single"
-	-- Vim Diagnostic Borders
-	vim.diagnostic.config({
-		float = { border = "single" },
-	})
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "single",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "single",
-	})
 
 	local opts = { noremap = true, silent = true }
 	local on_attach = function(_, bufnr)
@@ -54,16 +49,32 @@ local config = function()
 		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
 		opts.desc = "Show line diagnostics"
-		keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+		keymap.set("n", "<leader>d", function()
+			vim.diagnostic.open_float({
+				border = "single",
+				max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.8),
+				max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.5),
+			})
+		end, opts) -- show diagnostics for line
 
 		opts.desc = "Go to previous diagnostic"
-		keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+		keymap.set("n", "[d", function()
+			vim.diagnostic.jump({ count = -1 })
+		end, opts) -- jump to previous diagnostic in buffer
 
 		opts.desc = "Go to next diagnostic"
-		keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+		keymap.set("n", "]d", function()
+			vim.diagnostic.jump({ count = 1 })
+		end, opts) -- jump to next diagnostic in buffer
 
 		opts.desc = "Show documentation for what is under cursor"
-		keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+		keymap.set("n", "K", function()
+			vim.lsp.buf.hover({
+				border = "single",
+				max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.8),
+				max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.5),
+			})
+		end, opts) -- show documentation for what is under cursor
 
 		opts.desc = "Restart LSP"
 		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -72,26 +83,43 @@ local config = function()
 	-- used to enable autocompletion (assign to every lsp server config)
 	local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-	-- Change the Diagnostic symbols in the sign column (gutter)
-	-- (not in youtube nvim video)
-	local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
+	vim.lsp.enable({
+		"rust_analyzer",
+		"lua_ls",
+		"jdtls",
+		"clangd",
+		"pyright",
+		"ocamllsp",
+		"ts_ls",
+		"svelte",
+		"cssls",
+		"emmet_ls",
+	})
 
-	lspconfig["rust_analyzer"].setup({
+	vim.lsp.config("*", {
 		capabilities = capabilities,
 		on_attach = on_attach,
-		settings = {
-			["rust-analyzer"] = {},
-		},
+	})
+
+	-- manually setting it (global not working, idk why)
+	vim.lsp.config("rust_analyzer", {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	-- manually setting it (global not working, idk why)
+	vim.lsp.config("pyright", {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	vim.lsp.config("ts_ls", {
+		capabilities = capabilities,
+		on_attach = on_attach,
 	})
 
 	-- configure lua server (with special settings)
-	lspconfig["lua_ls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
+	vim.lsp.config("lua_ls", {
 		settings = { -- custom settings for lua
 			Lua = {
 				-- make the language server recognize "vim" global
@@ -110,9 +138,7 @@ local config = function()
 	})
 
 	-- configure nix server
-	lspconfig["nil_ls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
+	vim.lsp.config("nil_ls", {
 		settings = {
 			["nil"] = {
 				formatting = {
@@ -122,56 +148,20 @@ local config = function()
 		},
 	})
 
-	-- configure c/c++ server
-	lspconfig["clangd"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	-- configure ocaml server
-	lspconfig["ocamllsp"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
 	-- configure java server
-	lspconfig["jdtls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	-- configure css, scss server
-	lspconfig["cssls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	-- configure typescript server
-	lspconfig["ts_ls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	lspconfig["svelte"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	-- configure python server
-	lspconfig["pyright"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	lspconfig["cssls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
-	lspconfig["emmet_ls"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		filetypes = { "html", "css", "sass", "scss", "svelte" },
+	vim.lsp.config("jdtls", {
+		handlers = {
+			["language/status"] = function(_, _) end,
+			["$/progress"] = function(_, _) end,
+		},
+		cmd = {
+			"jdtls",
+			"--data",
+			vim.fn.stdpath("cache") .. "/jdtls/workspace", -- Use a generic workspace directory
+		},
+		root_dir = function()
+			return vim.fn.getcwd()
+		end,
 	})
 end
 

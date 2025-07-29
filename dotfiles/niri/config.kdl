@@ -1,0 +1,6 @@
+include "configs/general.kdl"
+include "configs/input.kdl"
+include "configs/output.kdl"
+include "configs/layout.kdl"
+include "configs/windowrules.kdl"
+include "configs/animations.kdl"

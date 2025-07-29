@@ -43,12 +43,19 @@ local config = function()
 			},
 		},
 	})
+
+	-- changes vim.ui.select to use telescope
+	require("telescope").load_extension("ui-select")
 end
 
 return {
 	"nvim-telescope/telescope.nvim",
 	lazy = false,
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
 	config = config,
 	keys = {
 		mapkey("<leader>fk", "<CMD>Telescope keymaps<CR>", "n"),

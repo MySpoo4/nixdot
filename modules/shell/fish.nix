@@ -1,6 +1,7 @@
 { ... }:
 let
-  exec = "exec Hyprland";
+  exec = "exec niri-session";
+  # exec = "exec Hyprland";
 in
 {
   programs.fish = {

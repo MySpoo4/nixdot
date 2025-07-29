@@ -1,7 +1,6 @@
 {
   inputs,
   nixpkgs,
-  nixos-hardware,
   home-manager,
   vars,
   overlays,

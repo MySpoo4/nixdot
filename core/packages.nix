@@ -30,6 +30,7 @@
     cmake
     libtool
     killall
+    wl-clipboard
 
     # media
     ffmpeg

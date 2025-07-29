@@ -19,6 +19,7 @@ local config = function(_, opts)
 				package_uninstalled = "✗",
 			},
 			border = "single",
+			backdrop = 100,
 			width = 0.8,
 			height = 0.8,
 		},
@@ -34,6 +35,7 @@ local config = function(_, opts)
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
+		handlers = {},
 	})
 
 	mason_tool_installer.setup({

@@ -5,5 +5,6 @@
     ./gtk
     ./xdg
     ./swww
+    ./niri
   ];
 }

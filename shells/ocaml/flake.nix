@@ -37,6 +37,7 @@
                 dune_3
                 odoc
                 ocaml-lsp
+                utop
               ])
             ];
           };
