@@ -26,12 +26,12 @@
     #   url = "github:nixos/nixpkgs?ref=nixos-24.11";
     # };
 
-    ags = {
-      url = "github:aylur/ags";
-      # url = "github:aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
-      # inputs.nixpkgs.follows = "ags-nix";
-      # flake = false;
-    };
+    # ags = {
+    #   url = "github:aylur/ags";
+    #   # url = "github:aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
+    #   # inputs.nixpkgs.follows = "ags-nix";
+    #   # flake = false;
+    # };
   };
 
   outputs =

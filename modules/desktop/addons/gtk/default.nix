@@ -22,6 +22,10 @@ in
       XCURSOR_THEME = theme.cursor.name;
       XCURSOR_SIZE = theme.cursor.size;
     };
+
+    packages = with pkgs; [
+      dconf
+    ];
   };
 
   gtk = {

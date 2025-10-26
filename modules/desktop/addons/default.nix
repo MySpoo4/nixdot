@@ -1,10 +1,10 @@
 {
   imports = [
-    ./ags
+    # ./ags
     ./hyprland
     ./gtk
     ./xdg
     ./swww
-    ./niri
+    # ./niri
   ];
 }

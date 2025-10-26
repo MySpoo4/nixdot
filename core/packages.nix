@@ -34,5 +34,9 @@
 
     # media
     ffmpeg
+
+    gparted
+    xorg.xhost
+    polkit_gnome
   ];
 }

@@ -29,5 +29,6 @@
     # gtk4-layer-shell
     # pkg-config
     xwayland-satellite
+    pavucontrol
   ];
 }

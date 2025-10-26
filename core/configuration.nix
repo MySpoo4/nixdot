@@ -22,6 +22,8 @@
     ignoreShellProgramCheck = true;
   };
 
+  environment.shells = [ pkgs.fish ];
+
   nixpkgs.config = {
     allowUnfree = true;
     # packageOverrides = pkgs: {
