@@ -2,41 +2,21 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # terminal
-    neovim # Text Editor
-    wget # Retriever
+    # terminal stuff
+    neovim
     kitty
-    nixfmt-rfc-style # nix formatter
+    git
 
-    xdg-utils
-    gtk-layer-shell
-    gtk3
-    libappindicator-gtk3
-
-    # File Management
+    # files
     unzip
     zip
-    unrar
 
     # utilities
-    git
-    git-lfs
+    wget
     curl
     ripgrep
     fd
     fzf
-    gnumake
-    gcc
-    cmake
-    libtool
     killall
-    wl-clipboard
-
-    # media
-    ffmpeg
-
-    gparted
-    xorg.xhost
-    polkit_gnome
   ];
 }

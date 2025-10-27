@@ -1,35 +1,21 @@
 {
   inputs,
-  nixpkgs,
-  home-manager,
-  vars,
-  overlays,
   ...
 }:
 let
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    overlays = [ overlays.modifications ];
-    config.allowUnfree = true;
-  };
-  lib = nixpkgs.lib;
-in
-{
-  null = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit inputs system vars;
-      host = {
-        hostName = "null";
-      };
-    };
+  corePath = ../core;
 
-    modules = [
-      ./configuration.nix
-      ./packages.nix
-      ./home.nix
-      ../hosts/null
-    ];
-  };
-}
+  hosts = builtins.attrValues (builtins.readDir ../hosts);
+  mkHost =
+    name:
+    import (../hosts + "/${name}") {
+      inherit inputs corePath;
+    };
+in
+# Dynamically add all hosts
+builtins.listToAttrs (
+  map (host: {
+    name = host;
+    value = mkHost host;
+  }) hosts
+)

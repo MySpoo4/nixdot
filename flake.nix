@@ -1,37 +1,21 @@
 {
-  description = "My personal config";
+  description = "NixOS Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
+    # follow unstable pkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # User Environment Manager
     home-manager = {
-      # User Environment Manager
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      # Official Hyprland Flake
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # TODO check if this is still default
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # ags-nix = {
-    #   url = "github:nixos/nixpkgs?ref=nixos-24.11";
-    # };
-
-    # ags = {
-    #   url = "github:aylur/ags";
-    #   # url = "github:aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
-    #   # inputs.nixpkgs.follows = "ags-nix";
-    #   # flake = false;
-    # };
   };
 
   outputs =
@@ -43,12 +27,12 @@
       ...
     }@inputs:
     let
-      vars = {
-        user = "rwan";
-        terminal = "kitty";
-        editor = "nvim";
-      };
-      overlays = import ./overlays { inherit inputs; };
+      # vars = {
+      #   user = "rwan";
+      #   terminal = "kitty";
+      #   editor = "nvim";
+      # };
+      # overlays = import ./overlays { inherit inputs; };
     in
     {
       nixosConfigurations = (
@@ -58,8 +42,8 @@
             inputs
             nixpkgs
             home-manager
-            vars
-            overlays
+            # vars
+            # overlays
             ;
         }
       );

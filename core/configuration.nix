@@ -1,48 +1,47 @@
 {
-  config,
-  lib,
   pkgs,
-  inputs,
-  vars,
   ...
 }:
 {
-  imports = [
-    ../modules/desktop/hyprland
-  ];
-
-  users.users.${vars.user} = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
+  time.timeZone = "America/New_York";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_MONETARY = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
-  environment.shells = [ pkgs.fish ];
+  console = {
+    font = "FiraCode";
+    keyMap = "us";
+  };
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
+  environment.variables = {
+    XDG_CONFIG_HOME = "$HOME/dotfiles";
+    # wayland support for chromium and electron
+    NIXOS_OZONE_WL = "1";
+    # default editor
+    EDITOR = "nvim";
+  };
+
+  programs.nix-ld.enable = true;
+
+  services = {
+    pipewire.enabled = true;
+    pulseaudio.enable = false;
+    thermald.enable = true;
+    upower.enable = true;
+    openssh.enable = true;
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
-    # packageOverrides = pkgs: {
-    #   nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-    #     inherit pkgs;
-    #   };
-    # };
-  };
-
-  security.pam.services.hyprlock = {
-    text = ''
-      auth include login
-    '';
-  };
-
-  environment.sessionVariables = {
-    XDG_CONFIG_HOME = "$HOME/dotfiles";
-    NIXOS_OZONE_WL = "1";
-    EDITOR = "nvim";
   };
 
   nix = {
@@ -59,19 +58,10 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.git;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
     '';
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
   };
 
   fonts = {
@@ -80,7 +70,6 @@
       inter
       material-design-icons
       nerd-fonts.fira-code
-      nerd-fonts.jetbrains-mono
     ];
     fontconfig.defaultFonts = {
       serif = [ "inter" ];
@@ -88,5 +77,4 @@
       monospace = [ "FiraCode" ];
     };
   };
-  system.stateVersion = "24.05";
 }
