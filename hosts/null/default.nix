@@ -1,21 +1,15 @@
 {
   inputs,
-  corePath,
+  systemModules,
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
-  #   inherit system;
-  # specialArgs = {
-  #   inherit inputs system vars;
-  #   host = {
-  #     hostName = "null";
-  #   };
-  # };
+  specialArgs = {
+    inherit inputs systemModules;
+  };
 
   modules = [
-    # general configuration
-    (corePath + /configuration.nix)
-    # host specific configuration
     ./configuration.nix
+    ./hardware-configuration.nix
   ];
 }

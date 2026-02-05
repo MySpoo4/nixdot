@@ -1,103 +1,65 @@
 {
-  config,
-  lib,
   pkgs,
+  systemModules,
   ...
 }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = with systemModules; [
+    home-manager
+    packages
+    locale
+    services
+    hardware
+    fonts
+    boot
+    nix-stuff
+    environment
+    network
+    power
+  ];
 
-  users.users = {
-    rwan = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "networkmanager"
-      ];
-      shell = pkgs.fish;
-      ignoreShellProgramCheck = true;
-    };
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  services.blueman.enable = true;
+
+# Enable PipeWire with Bluetooth support
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+
+    wireplumber.enable = true;
+
+    # # IMPORTANT: enable Bluetooth codecs
+    # bluetooth.enable = true;
+    # bluetooth.supportAptX = true;  # optional
   };
 
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-      };
-      timeout = 5;
-    };
-    kernelPackages = pkgs.linuxPackages_latest;
+  systemModules = {
+    home-manager.usersDir = ./users;
+
+    locale.timeZone = "America/Atlanta";
+
+    # hardware.graphics.extraPkgs = with pkgs; [
+    #   # intel-media-driver
+    #   # vpl-gpu-rt
+    # ];
+
+    power.isLaptop = true;
   };
 
-  hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vpl-gpu-rt
-      ];
-    };
+  users.users.rwan = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
   };
-
-  networking = {
-    hostName = "null";
-    networkmanager.enable = true;
-  };
-
-  hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-    };
-  };
-
-  environment.systemPackages = [ pkgs.tpacpi-bat ];
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-  services = {
-    pulseaudio.enable = false;
-    thinkfan.enable = true;
-    thermald.enable = true;
-    upower.enable = true;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "ondemand";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-        CPU_BOOST_ON_BAT = 0;
-        CPU_BOOST_ON_AC = 1;
-        DISK_IDLE_SECS_ON_AC = 0;
-        DISK_IDLE_SECS_ON_BAT = 2;
-        MAX_LOST_WORK_SECS_ON_AC = 15;
-        MAX_LOST_WORK_SECS_ON_BAT = 60;
-        SCHED_POWERSAVE_ON_AC = 0;
-        SCHED_POWERSAVE_ON_BAT = 1;
-        START_CHARGE_THRESH_BAT0 = 60;
-        STOP_CHARGE_THRESH_BAT0 = 85;
-        DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi wwan";
-        DEVICES_TO_DISABLE_ON_WIFI_CONNECT = "wwan";
-        DEVICES_TO_DISABLE_ON_WWAN_CONNECT = "wifi";
-        DEVICES_TO_ENABLE_ON_LAN_DISCONNECT = "wifi wwan";
-        DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT = "";
-        DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT = "";
-      };
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-      wireplumber.enable = true;
-    };
-  };
-
-  programs.nix-ld.enable = true;
 
   system.stateVersion = "24.05";
 }

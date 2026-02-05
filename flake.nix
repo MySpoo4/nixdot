@@ -23,30 +23,13 @@
       self,
       nixpkgs,
       nixos-hardware,
-      home-manager,
       ...
     }@inputs:
-    let
-      # vars = {
-      #   user = "rwan";
-      #   terminal = "kitty";
-      #   editor = "nvim";
-      # };
-      # overlays = import ./overlays { inherit inputs; };
-    in
     {
-      nixosConfigurations = (
-        import ./core {
-          inherit (nixpkgs) lib;
-          inherit
-            inputs
-            nixpkgs
-            home-manager
-            # vars
-            # overlays
-            ;
-        }
-      );
+      nixosConfigurations = import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs;
+      };
 
       templates = import ./shells/shells.nix;
     };

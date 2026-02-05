@@ -1,9 +1,0 @@
-[
-  ./packages.nix
-  ./firefox.nix
-  ./kitty.nix
-  ./nvim.nix
-  ./vesktop.nix
-  ./zathura.nix
-  ./zoom.nix
-]
