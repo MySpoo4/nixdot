@@ -18,6 +18,7 @@
     fzf
     killall
     bluetuith
-    google-chrome
+
+    niri
   ];
 }

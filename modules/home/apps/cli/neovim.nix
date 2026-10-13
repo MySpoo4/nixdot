@@ -17,7 +17,7 @@
   };
 
   home.packages = with pkgs; [
-    # # treesitter
+    tree-sitter
     # nodejs
   ];
 }

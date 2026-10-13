@@ -1,0 +1,33 @@
+{
+  "plugins": {
+    "canola.nvim": {
+      "rev": "3838f1380e9aeea0597a80beb6ab28da73e38525",
+      "src": "https://github.com/barrettruth/canola.nvim",
+      "version": "'canola'"
+    },
+    "fzf-lua": {
+      "rev": "44816af2465bb0a17ae0f1f2d8a4f9c3df524fcd",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gruvbox-material.nvim": {
+      "rev": "ee006c962780358b8f03eaa918a3139b7c6f0d81",
+      "src": "https://github.com/f4z3r/gruvbox-material.nvim"
+    },
+    "guard-collection": {
+      "rev": "edf6c86c06badc972964dadb7fd469022690cbf0",
+      "src": "https://github.com/nvimdev/guard-collection"
+    },
+    "guard.nvim": {
+      "rev": "addb8d2f40662b8b62d60dd7d18f503beb2332e7",
+      "src": "https://github.com/nvimdev/guard.nvim"
+    },
+    "nvim": {
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "59e1ba49e33e1b73bef655fd34b5e65e1465053f",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    }
+  }
+}

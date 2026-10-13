@@ -14,8 +14,18 @@
     # TODO check if this is still default
     niri = {
       url = "github:sodiboo/niri-flake";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    codex = {
+      url = "github:sadjow/codex-cli-nix";
+    };
+
   };
 
   outputs =
